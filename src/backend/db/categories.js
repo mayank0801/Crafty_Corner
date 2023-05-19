@@ -5,23 +5,38 @@ import { v4 as uuid } from "uuid";
  * You can add category of your wish with different attributes
  * */
 
+
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Wooden HandiCraft",
+    Type:"Wooden",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/WMDD502_main_whd_fcd88c74-67f7-450f-b7ed-1d884473faeb_180x.jpg?v=1627117988",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "All HandiCraft Item of category",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Marble HandiCraft",
+    Type:"Marble",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/MGG534_main_hd_360x.jpg?v=1627118204",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "All HandiCraft Item Of Marble",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Iron HandiCraft",
+    Type:"Iron",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/IBG500_main_whd_360x.jpg?v=1627118357",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "All HandiCraft Item OF Iron",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Metal HandiCraft",
+    Type:"Metal",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/ABAB502_main_hd_360x.jpg?v=1627117917",
+    description:
+      "All HandiCraft Item OF metal",
   },
 ];
