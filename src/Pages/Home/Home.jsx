@@ -2,6 +2,8 @@ import { useContext } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import "./Home.css"
 import { DataContext } from "../../context/dataContext/dataContext";
+import Category from "../../components/Category/Category";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home(){
     const {state}=useContext(DataContext);
@@ -11,9 +13,12 @@ export default function Home(){
             <nav className="navigation">
             <NavBar/>
             </nav>
-            <section className="category-container">
-
+            <section>
+                <Category/>
             </section>
+            <footer >
+                <Footer/>
+            </footer>
         </div>
     )
 }

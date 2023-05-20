@@ -5,8 +5,9 @@ input:focus, textarea:focus, select:focus{
 .navigation-container {
     max-width: 80%;
     margin: 0 auto;
-    height: 64px;
     display: flex;
+    /* flex-shrink: 1; */
+    /* flex-wrap: wrap; */
     justify-content: space-between;
     align-items: center;
   }
@@ -19,6 +20,7 @@ input:focus, textarea:focus, select:focus{
     padding: 0.25rem 1rem ;
   }
   .search-bar{
+    width: 100%;
     border: none;
   }
   
@@ -27,11 +29,33 @@ input:focus, textarea:focus, select:focus{
     color: red;
   }
   .navigate-link{
-    margin: 0rem 0.5rem;
-    padding: 0;
+    padding: 0rem 0.25rem;
+    /* padding: 0; */
     text-decoration: none;
   }
   .product{
     align-items: center;
+  }
+
+
+
+
+  @media (width<800px) {
+    .navigation-container{
+      flex-wrap: wrap;
+    }
+    .navigation-search{
+      order: 2;
+    }
+    .navigation-search{
+      width: 100%;
+    }
+    
+  }
+
+
+  @media (width<500px) {
+    .navigation-container{}
+    
   }
   

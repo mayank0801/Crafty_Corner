@@ -39,4 +39,27 @@ export const categories = [
     description:
       "All HandiCraft Item OF metal",
   },
+  {
+    _id: uuid(),
+    categoryName: "Wooden HandiCraft",
+    Type:"Wooden",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/WMDD502_main_whd_fcd88c74-67f7-450f-b7ed-1d884473faeb_180x.jpg?v=1627117988",
+    description:
+      "All HandiCraft Item of category",
+  },{
+    _id: uuid(),
+    categoryName: "Metal HandiCraft",
+    Type:"Metal",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/ABAB502_main_hd_360x.jpg?v=1627117917",
+    description:
+      "All HandiCraft Item OF metal",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Wooden HandiCraft",
+    Type:"Wooden",
+    url:"https://www.ecraftindia.com/cdn/shop/collections/WMDD502_main_whd_fcd88c74-67f7-450f-b7ed-1d884473faeb_180x.jpg?v=1627117988",
+    description:
+      "All HandiCraft Item of category",
+  }
 ];
