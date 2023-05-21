@@ -1,0 +1,29 @@
+.filter-container {
+    /* border: 1px solid black; */
+    width: 90%;
+    margin: 0 auto;
+    /* margin: 0rem 0.5rem 1rem 0; */
+  }
+  .filter-heading {
+    display: flex;
+    justify-content: space-between;
+    /* padding-bottom: 0.5rem; */
+    /* border-bottom: 1px dotted black; */
+  }
+  .btn-primary {
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+  }
+  .filter-title > h4 {
+    margin-bottom: 0.2rem;
+    border-bottom: 1px solid black;
+  }
+  .filter-input {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-filter {
+    padding: 0.25rem;
+  }
+  
