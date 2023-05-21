@@ -1,12 +1,9 @@
 export const initialState={
     filters:{
         sort:"",
-        rating:"",
+        rating:0,
         categorySelected:[],
-        price:{
-            minPrice:0,
-            maxPrice:+Infinity
-        }
+        price:20000
     },
     products:[],
     categories:[]
@@ -21,6 +18,15 @@ export const reducer=(state,action)=>{
         case "INTIALIZE_PRODUCT":
             console.log("Product reduce is called");
             return {...state,products:action.payLoad}
+        case "FILTER_CHANGE":
+            console.log(action.payLoad,"Filter Changed")
+            if(action.payLoad.FilterType==="categorySelected"){
+                const isselectedAlready=state.filters.categorySelected.includes(action.payLoad.value);
+                if(!isselectedAlready)return {...state,filters:{...state.filters,[action.payLoad.FilterType]:[...state.filters.categorySelected,action.payLoad.value]}}
+                else return {...state,filters:{...state.filters,[action.payLoad.FilterType]:state.filters.categorySelected.filter(cat=>cat!==action.payLoad.value)}}
+            }
+            console.log(action.payLoad.value,"selected price")
+            return {...state,filters:{...state.filters,[action.payLoad.FilterType]:action.payLoad.value}}
 
         default:
             return {...state};

@@ -3,10 +3,15 @@ import FilterCard from "../../components/FilterCard/FilterCard";
 import { DataContext } from "../../context/dataContext/dataContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Products.css"
+import filterData from "../../utils/filterFunction";
 
 export default function Products(){
     const {state}=useContext(DataContext);
-    console.log(state.products,"state products")
+    // console.log(state.products,"state products")
+
+    let dataToDisplay=filterData(state);
+    console.log(dataToDisplay)
+
     return(
         <div className="product">
             <div className="filter-containerr">
@@ -15,7 +20,7 @@ export default function Products(){
             </div>
             <div className="productList-container">
             {
-                state.products.map(product=><ProductCard key={product._id} product={product}/>)
+                dataToDisplay.map(product=><ProductCard key={product._id} product={product}/>)
             }
             
             </div>
