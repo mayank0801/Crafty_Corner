@@ -36,7 +36,7 @@ export default function Login() {
           </div>
           <div className="login-navigater">
             
-            <Link className="link-primary" to="/sign-up">
+            <Link className="link-primary" to="/signUp">
               Create New Account 
             </Link>
             <MdNavigateNext />
