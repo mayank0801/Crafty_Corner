@@ -13,9 +13,13 @@ export default function SignUp() {
     const formHandler=(e)=>{
         const name=e.target.name;
         const value=e.target.value
-       return setUserInfo({...userInfo,[name]:value})
+        setUserInfo({...userInfo,[name]:value})
     }
-    // console.log(userInfo,"formHandler")
+    const accountHandler=()=>{
+        signupHandler();
+        setUserInfo({...userInfo,firstName:"",lastName:"",email:"",password:""})
+    }
+    console.log(userInfo,"formHandler")
   return (
     <section className="auth-container">
       <div className="auth-main-container">
@@ -26,25 +30,25 @@ export default function SignUp() {
           <div className="user-info">
             <div className="user-name">
               <label>First Name: </label>
-              <input type="text" name="firstName" placeholder="Test" onChange={(e)=>formHandler(e)}/>
+              <input type="text" name="firstName" value={userInfo.firstName} placeholder="Test" onChange={(e)=>formHandler(e)}/>
             </div>
             <div className="user-name">
               <label>Last Name: </label>
-              <input type="text" name="lastName" placeholder="Test" onChange={(e)=>formHandler(e)}/>
+              <input type="text" name="lastName" value={userInfo.lastName} placeholder="Test" onChange={(e)=>formHandler(e)}/>
             </div>
           </div>
           <div className="input-container">
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" placeholder="test@gmail.com" onChange={(e)=>formHandler(e)} />
+            <input type="email" name="email" value={userInfo.email} placeholder="test@gmail.com" onChange={(e)=>formHandler(e)} />
           </div>
           <div className="input-container">
             <label htmlFor="password">Password:</label>
-            <input type="password" name="password" placeholder="*****" onChange={(e)=>formHandler(e)}/>
+            <input type="password" name="password" value={userInfo.password} placeholder="*****" onChange={(e)=>formHandler(e)}/>
           </div>
         </main>
         <footer>
           <div className="btn-primary">
-            <span onClick={()=>signupHandler(userInfo)}>Create New Account </span>
+            <span onClick={()=>accountHandler()}>Create New Account </span>
           </div>
           <div className="auth-navigater">
             <Link className="link-primary" to="/login">

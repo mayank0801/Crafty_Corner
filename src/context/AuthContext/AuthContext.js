@@ -1,8 +1,12 @@
 import { createContext } from "react";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router";
 export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
+
+
+    const navigate=useNavigate();
 
     const loginHandler = async (email,password) => {
         try {
@@ -12,7 +16,10 @@ export default function AuthContextProvider({children}){
           });
           console.log(response,"Login Response");
           // saving the encodedToken in the localStorage
+          if(response.status===201){
+          navigate("/store")
           localStorage.setItem("token", response.data.encodedToken);
+          }
         } catch (error) {
           console.log(error);
         }
@@ -26,8 +33,11 @@ export default function AuthContextProvider({children}){
            ...userInfo
           });
           console.log(response);
-          // saving the encodedToken in the localStorage
+          if(response.status===201)
+          {
           localStorage.setItem("token", response.data.encodedToken);
+          navigate("/store")
+          }
         } catch (error) {
           console.log(error);
         }
