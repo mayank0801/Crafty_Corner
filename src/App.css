@@ -2,3 +2,12 @@
     /* max-width: 80%; */
     /* margin: 0 auto; */
 /* } */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* footer{
+    text-align: center;
+} */

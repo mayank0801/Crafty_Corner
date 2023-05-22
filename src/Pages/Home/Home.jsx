@@ -10,13 +10,11 @@ export default function Home(){
     console.log(state.categories,"categories");
     return(
         <div className="home">
-            <nav className="navigation">
-            <NavBar/>
-            </nav>
+           
             <section>
                 <Category/>
             </section>
-            <footer >
+            <footer  className="footer-container">
                 <Footer/>
             </footer>
         </div>

@@ -27,14 +27,14 @@ export default function NavBar() {
 
 
       <div className="navigation-pages">
-        <Link className="navigate-link product">Products</Link>
+        <Link className="navigate-link product" to="/store">Products</Link>
         <Link className="navigate-link">
         <AiOutlineHeart size={30} />
         </Link>
         <Link className="navigate-link">
         <AiOutlineShoppingCart size={30} />
         </Link>
-        <Link className="navigate-link">
+        <Link to="/login" className="navigate-link">
         <CgProfile size={30} />
         </Link>
       </div>

@@ -1,0 +1,8 @@
+.user-container{
+    /* border: 1px solid red; */
+   padding-top: 10%;
+    /* position:streched; */
+}
+.user-container>main{
+    align-self: center;
+}
