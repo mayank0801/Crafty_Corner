@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar/NavBar";
 import  UserProfile  from "./Pages/UserProfile/UserProfile";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import { UserDetail } from "./components/UserDetail/UserDetail";
+import { UserInfo } from "./Pages/UserInfo/UserInfo";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/store" element={<Products/>}/>
         <Route path="/login" element={<UserProfile/>}/>
         <Route path="/signUp" element={<SignUp/>}/>
+        <Route path="/userProfile" element={<UserInfo/>}/>
         </Routes>
 
     </div>
