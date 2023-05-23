@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import "./UserInfo.css";
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 export const UserInfo = () => {
-const {user}=useContext(AuthContext);
+const {user,logoutHandler}=useContext(AuthContext);
 
 const [isProfile,setIsProfile]=useState(true);
 
@@ -21,7 +21,7 @@ const [isProfile,setIsProfile]=useState(true);
       <h3>Email:{email}</h3>
 
       <h2>Account Setting</h2>
-      <button className='btn-primary'>Logout</button>
+      <button className='btn-primary' onClick={logoutHandler}>Logout</button>
     </div>
     )
   }

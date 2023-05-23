@@ -7,14 +7,14 @@ export default function AuthContextProvider({children}){
   const localStorageToken=JSON.parse(localStorage.getItem('user'));
   console.log(localStorageToken);
   const [token,setToken]=useState(localStorageToken?.token);
-  const [user,setUser]=useState(localStorageToken?.foundUser);
+  const [user,setUser]=useState(localStorageToken?.userInfo);
+  console.log(token,user);
 
 
   useEffect(()=>{
-    const localStorageToken=JSON.parse(localStorage.getItem('userInfo'));
+    const localStorageToken=JSON.parse(localStorage.getItem('user'));
     setToken(localStorageToken?.token)
-    setUser(localStorageToken?.foundUser)
-
+    setUser(localStorageToken?.userInfo)
   },[])
 
     const navigate=useNavigate();
@@ -57,7 +57,16 @@ export default function AuthContextProvider({children}){
       };
 
 
+      const logoutHandler=()=>{
+        console.log("logout started");
+        localStorage.removeItem('user');
+        setToken(false)
+        setUser(false)
+        navigate('/login');
+      }
+
+
     return(
-        <AuthContext.Provider value={{loginHandler,signupHandler,token,user}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{loginHandler,signupHandler,token,user,logoutHandler}}>{children}</AuthContext.Provider>
     )
 }
