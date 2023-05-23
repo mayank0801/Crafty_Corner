@@ -4,17 +4,18 @@ import { Navigate, useNavigate } from "react-router";
 export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
-  const localStorageToken=JSON.parse(localStorage.getItem('userInfo'));
+  const localStorageToken=JSON.parse(localStorage.getItem('user'));
   console.log(localStorageToken);
   const [token,setToken]=useState(localStorageToken?.token);
   const [user,setUser]=useState(localStorageToken?.foundUser);
 
 
-  // useEffect(()=>{
-  //   const localStorageToken=JSON.parse(localStorage.getItem('userInfo'));
-  //   setToken(localStorageToken?.token)
+  useEffect(()=>{
+    const localStorageToken=JSON.parse(localStorage.getItem('userInfo'));
+    setToken(localStorageToken?.token)
+    setUser(localStorageToken?.foundUser)
 
-  // },[])
+  },[])
 
     const navigate=useNavigate();
 
@@ -28,6 +29,8 @@ export default function AuthContextProvider({children}){
           // saving the encodedToken in the localStorage
           if(response.status===201||response.status===200){
           navigate("/store")
+          setToken(response.data.encodedToken);
+          setUser(response.data.foundUser)
           localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
           }
         } catch (error) {
@@ -37,7 +40,7 @@ export default function AuthContextProvider({children}){
 
 
       const signupHandler = async (userInfo) => {
-        console.log("Signup Hnadler with",userInfo)
+        console.log("Signup Hnadler with",user)
         try {
           const response = await axios.post(`/api/auth/signup`, {
            ...userInfo

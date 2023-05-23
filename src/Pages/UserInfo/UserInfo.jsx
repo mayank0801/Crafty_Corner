@@ -1,18 +1,43 @@
 
-import React, { useContext } from 'react'
-
-
+import React, { useContext, useState } from 'react'
+import "./UserInfo.css";
+import { AuthContext } from '../../context/AuthContext/AuthContext';
 export const UserInfo = () => {
-  // const {token}=useContext(AuthContext);
+const {user}=useContext(AuthContext);
+
+const [isProfile,setIsProfile]=useState(true);
+
+
+
+
+
+  const UserDetail=()=>{
+    const {email,firstName,lastName}=user;
+    console.log(email,firstName,lastName);
+    return(
+    <div className='user-profile'>
+      <h2>Profile Detail</h2>
+      <h3>Name:{`${firstName} ${lastName}`}</h3>
+      <h3>Email:{email}</h3>
+
+      <h2>Account Setting</h2>
+      <button className='btn-primary'>Logout</button>
+    </div>
+    )
+  }
   return (
     <div>
-        <h1>Profile Information</h1>
+        
         <div className='user-info-container'>
-            <h1>Account</h1>
+            <h1 className='title'>Account</h1>
             <div className='user-info-detail'>
               <div className='user-info-navigation'>
-                <label><input type="button" />Profile</label>
-                <label><input type='button'/>Address</label>
+                <label><button className='btn-display '>Profile</button></label>
+                <label><button className='btn-display '>Address</button></label>
+              </div>
+              <div className='user-content'>
+                {isProfile&&<UserDetail/>}
+                {/* {!isProfile&&<UserAddress/>} */}
               </div>
             </div>
         </div>
