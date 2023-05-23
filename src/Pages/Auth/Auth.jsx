@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Login from '../../components/Login/Login'
-import "./UserProfile.css"
+import "./Auth.css"
 import {Navigate} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext/AuthContext'
 import { UserInfo } from '../UserInfo/UserInfo';

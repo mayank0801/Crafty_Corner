@@ -4,10 +4,10 @@ import {Routes,Route} from "react-router-dom";
 import Products from "./Pages/Products/Products";
 import Home from "./Pages/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
-import  UserProfile  from "./Pages/UserProfile/UserProfile";
-import Login from "./components/Login/Login";
+import  UserProfile  from "./Pages/Auth/Auth";
+
 import SignUp from "./components/SignUp/SignUp";
-import { UserDetail } from "./components/UserDetail/UserDetail";
+
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
 
 function App() {
