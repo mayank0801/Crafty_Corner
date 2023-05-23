@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react'
 import "./UserInfo.css";
 import { AuthContext } from '../../context/AuthContext/AuthContext';
+import { Address } from '../../components/Address/Address';
 export const UserInfo = () => {
 const {user,logoutHandler}=useContext(AuthContext);
 
@@ -13,7 +14,7 @@ const [isProfile,setIsProfile]=useState(true);
 
   const UserDetail=()=>{
     const {email,firstName,lastName}=user;
-    console.log(email,firstName,lastName);
+    // console.log(email,firstName,lastName);
     return(
     <div className='user-profile'>
       <h2>Profile Detail</h2>
@@ -32,12 +33,12 @@ const [isProfile,setIsProfile]=useState(true);
             <h1 className='title'>Account</h1>
             <div className='user-info-detail'>
               <div className='user-info-navigation'>
-                <label><button className='btn-display '>Profile</button></label>
-                <label><button className='btn-display '>Address</button></label>
+                <label><button className='btn-display 'onClick={()=>setIsProfile(!isProfile)}>Profile</button></label>
+                <label><button className='btn-display ' onClick={()=>setIsProfile(!isProfile)}>Address</button></label>
               </div>
               <div className='user-content'>
                 {isProfile&&<UserDetail/>}
-                {/* {!isProfile&&<UserAddress/>} */}
+                {!isProfile&&<Address/>}
               </div>
             </div>
         </div>

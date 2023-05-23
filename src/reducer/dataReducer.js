@@ -6,7 +6,8 @@ export const initialState={
         price:20000
     },
     products:[],
-    categories:[]
+    categories:[],
+    address:[]
 }
 
 
