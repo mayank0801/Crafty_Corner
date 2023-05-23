@@ -3,11 +3,12 @@ import React, { useContext, useState } from 'react'
 import "./UserInfo.css";
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { Address } from '../../components/Address/Address';
+import NewAddressCard from '../../components/NewAddress/NewAddress';
 export const UserInfo = () => {
 const {user,logoutHandler}=useContext(AuthContext);
 
 const [isProfile,setIsProfile]=useState(true);
-
+const [isShowAddressForm,setShowAddressForm]=useState(false);
 
 
 
@@ -38,9 +39,14 @@ const [isProfile,setIsProfile]=useState(true);
               </div>
               <div className='user-content'>
                 {isProfile&&<UserDetail/>}
-                {!isProfile&&<Address/>}
+                {!isProfile&&<Address showFormHandler={setShowAddressForm}/>}
               </div>
+             
             </div>
+        </div>
+
+        <div className={isShowAddressForm?"displayFlex":"displayNone"}>
+          <NewAddressCard showFormHandler={setShowAddressForm}/>
         </div>
     </div>
   )

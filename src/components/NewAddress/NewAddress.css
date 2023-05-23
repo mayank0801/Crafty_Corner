@@ -1,0 +1,48 @@
+
+
+.signup-container {
+    /* width: 60%; */
+    /* max-width: 50%; */
+    background-color: #f8f8f8;
+  }
+  
+  .signup-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .signup-detail > input {
+    /* width: 100%; */
+    margin: 0.5rem;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  .address-btn {
+    /* margin-top: ; */
+    display: flex;
+    justify-content: center;
+    
+  }
+  .address-btn>button{
+    padding:0.2rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+  }
+  /* .address-btn{
+    background-color: green;
+  } */
+  
+  .btn-save{
+    background-color: rgb(25, 68, 25);
+    color: white;
+    font-weight: 600px;
+  }
+  .btn-cancel{
+    background-color: rgb(212, 185, 185);
+    color: white;
+    font-weight: 600px;
+  
+  }
+  

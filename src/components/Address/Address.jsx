@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../../context/dataContext/dataContext'
 import "./Address.css"
-export const Address = () => {
+export const Address = ({showFormHandler}) => {
     const {state:{address}}=useContext(DataContext);
   return (
     <div>
@@ -11,7 +11,7 @@ export const Address = () => {
             address.length
         }
     </div>
-        <button className='btn-Add'>+ Add New Address</button>
+        <button className='btn-Add' onClick={()=>showFormHandler(true)}>+ Add New Address</button>
     </div>
   )
 }
