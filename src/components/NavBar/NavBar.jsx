@@ -31,7 +31,7 @@ export default function NavBar() {
         <Link className="navigate-link">
         <AiOutlineHeart size={30} />
         </Link>
-        <Link className="navigate-link">
+        <Link className="navigate-link" to="/cart">
         <AiOutlineShoppingCart size={30} />
         </Link>
         <Link to="/login" className="navigate-link">

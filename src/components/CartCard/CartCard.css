@@ -1,0 +1,29 @@
+.card-conatiner {
+}
+.card-detail {
+  display: flex;
+}
+.title {
+  font-size: larger;
+  font-weight: bolder;
+  /* overflow: ; */
+  /* font-stretch: ultra-expanded; */
+}
+.currentPrice {
+  margin:0;
+}
+.originalPrice {
+  text-decoration: line-through;
+  color: #a9aba9;
+  font-weight: lighter;
+  margin:0;
+}
+.btn-rounded {
+  border: none;
+  border-radius: 50%;
+  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+  background-color: #282828;
+  color: white;
+  font-weight:bolder ;
+}

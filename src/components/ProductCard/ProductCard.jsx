@@ -1,6 +1,12 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import "./ProductCard.css"
+import { addtoCartHandler } from "../../Services/cartServices";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
+import { DataContext } from "../../context/dataContext/dataContext";
 export default function ProductCard({product}) {
+  const {token}=useContext(AuthContext);
+  const {dispatch}=useContext(DataContext);
     const {
       _id,
       productName,
@@ -26,7 +32,7 @@ export default function ProductCard({product}) {
             <span className="price">{originalPrice - currentPrice}Off</span>
           </div>
         </div>
-        <button className="btn-add">Add To Cart</button>
+        <button className="btn-add" onClick={()=>addtoCartHandler(product,token,dispatch)}>Add To Cart</button>
       </div>
     );
   }

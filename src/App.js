@@ -9,6 +9,8 @@ import  UserProfile  from "./Pages/Auth/Auth";
 import SignUp from "./components/SignUp/SignUp";
 
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
+import { Cart } from "./Pages/Cart/Cart";
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Route path="/store" element={<Products/>}/>
         <Route path="/login" element={<UserProfile/>}/>
         <Route path="/signUp" element={<SignUp/>}/>
+        <Route path="/cart" element={<Cart/>}/>
         <Route path="/userProfile" element={<UserInfo/>}/>
+        <Route path="/mockman" element={<Mockman/>}/>
         </Routes>
 
     </div>
