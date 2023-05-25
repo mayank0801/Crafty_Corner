@@ -8,7 +8,8 @@ export const initialState={
     products:[],
     categories:[],
     address:[],
-    cart:[]
+    cart:[],
+    wishlist:[]
 }
 
 

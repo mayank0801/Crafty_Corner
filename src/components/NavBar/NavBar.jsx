@@ -28,7 +28,7 @@ export default function NavBar() {
 
       <div className="navigation-pages">
         <Link className="navigate-link product" to="/store">Products</Link>
-        <Link className="navigate-link">
+        <Link className="navigate-link" to="/wishlist">
         <AiOutlineHeart size={30} />
         </Link>
         <Link className="navigate-link" to="/cart">
