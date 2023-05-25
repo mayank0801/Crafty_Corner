@@ -12,6 +12,9 @@ export const initialState={
     wishlist:[]
 }
 
+// const [cart,setcart]=useState([])
+// cart
+
 
 export const reducer=(state,action)=>{
     switch(action.type){

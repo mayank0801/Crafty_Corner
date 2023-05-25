@@ -9,7 +9,7 @@ export const Cart = () => {
     <div className='conatiner-center'>Cart:{cart.length}
     <div>
       {
-        cart.map(product=><CartCard key={product._id} {...product}/>)
+        cart.map(product=><CartCard key={product._id} product={product}/>)
       }
     </div>
     </div>

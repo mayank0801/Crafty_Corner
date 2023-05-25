@@ -3,18 +3,30 @@ import { removeFromCart, updateQuantity } from "../../Services/cartServices";
 import "./CartCard.css";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
+import { isInWishList } from "../../utils/utlis";
+import { addToWishList } from "../../Services/wishListServices";
+import { useNavigate } from "react-router";
 export default function CartCard({
-  _id,
-  productName,
-  currentPrice,
-  originalPrice,
-  rating,
-  imageUrl,
-  categoryName,qty,id
+ product
 }) {
+    const { _id,
+        productName,
+        currentPrice,
+        originalPrice,
+        rating,
+        imageUrl,
+        categoryName,qty,id}=product
     const {token}=useContext(AuthContext);
-    const {dispatch}=useContext(DataContext)
+    const {state:{wishlist},dispatch}=useContext(DataContext)
     // console.log(productName,"Inside Cart",token);
+
+    const wishlistHandler=(product,token,dispatch)=>{
+        addToWishList(product,token,dispatch);
+        removeFromCart(product._id,token,dispatch)
+    }
+
+    const navigate=useNavigate();
+
   return (
     <div className="card-conatiner">
       <div className="card-detail">
@@ -30,7 +42,12 @@ export default function CartCard({
           </p>
           <div className="">
             <button onClick={()=>removeFromCart(_id,token,dispatch)}>Remove The Cart</button>
-            <button>Add To WishList</button>
+            <button onClick={
+                ()=>{
+                    isInWishList(_id,wishlist)?
+                    navigate("/wishlist"):wishlistHandler(product,token,dispatch)
+                }
+            }>{isInWishList(_id,wishlist)?"Already in WishList":"Add To WishList"}</button>
           </div>
         </div>
       </div>
