@@ -4,6 +4,7 @@ import { addtoCartHandler } from "../../Services/cartServices";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
+import { addToWishList } from "../../Services/wishListServices";
 export default function ProductCard({product}) {
   const {token}=useContext(AuthContext);
   const {dispatch}=useContext(DataContext);
@@ -18,7 +19,9 @@ export default function ProductCard({product}) {
     } = product;
     return (
       <div className="product-container">
-          <AiOutlineHeart className="wishlist-icon" />
+        <button>
+          <AiOutlineHeart className="wishlist-icon" onClick={()=>addToWishList(product,token,dispatch)}/>
+          </button>
         <div className="product-image-detail">
           <img className="product-image" src={imageUrl} alt="productImage" />
         </div>

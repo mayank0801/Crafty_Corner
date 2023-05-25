@@ -2,9 +2,9 @@ const filterData=(state)=>{
     let filteredData=[];
 
     filteredData=state.products.filter(({rating})=>rating>=Number(state.filters.rating))
-    console.log(filteredData,"checkPoint 1");
+    // console.log(filteredData,"checkPoint 1");
     filteredData=state.filters.categorySelected.length?filteredData.filter(({categoryName})=>state.filters.categorySelected.includes(categoryName)):filteredData;
-    console.log(filteredData,"checkPoint 2")
+    // console.log(filteredData,"checkPoint 2")
 
     filteredData=filteredData.filter(({currentPrice})=>{
         return currentPrice<=Number(state.filters.price)

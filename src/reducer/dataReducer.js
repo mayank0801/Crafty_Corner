@@ -41,6 +41,10 @@ export const reducer=(state,action)=>{
             return {...state,cart:[...action.payLoad]};
         case "UPDATE_CART":
             return {...state,cart:[...action.payLoad]};
+        case "ADD_TO_WISHLIST":
+            return {...state,wishlist:[...action.payLoad]};
+        case "UPDATE_WISHLIST":
+            return {...state,wishlist:[...action.payLoad]};
         default:
             return {...state};
     }

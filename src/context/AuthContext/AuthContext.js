@@ -8,7 +8,7 @@ export default function AuthContextProvider({children}){
   console.log(localStorageToken);
   const [token,setToken]=useState(localStorageToken?.token);
   const [user,setUser]=useState(localStorageToken?.userInfo);
-  console.log(token,user);
+  // console.log(token,user);
 
 
   useEffect(()=>{

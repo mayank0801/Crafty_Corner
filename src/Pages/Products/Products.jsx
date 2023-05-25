@@ -10,7 +10,7 @@ export default function Products(){
     // console.log(state.products,"state products")
 
     let dataToDisplay=filterData(state);
-    console.log(dataToDisplay)
+    // console.log(dataToDisplay)
 
     return(
         <div className="product">
