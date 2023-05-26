@@ -12,6 +12,8 @@ export const initialState={
     wishlist:[]
 }
 
+
+
 // const [cart,setcart]=useState([])
 // cart
 

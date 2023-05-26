@@ -3,7 +3,7 @@ import Login from '../../components/Login/Login'
 import "./Auth.css"
 import {Navigate} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext/AuthContext'
-import { UserInfo } from '../UserInfo/UserInfo';
+
 export default function UserProfile() {
   const {token}=useContext(AuthContext);
   return (

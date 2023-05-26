@@ -2,6 +2,7 @@ input:focus, textarea:focus, select:focus{
     outline: none;
 }
 
+
 .navigation-container {
     max-width: 80%;
     margin: 0 auto;
@@ -10,7 +11,23 @@ input:focus, textarea:focus, select:focus{
     /* flex-wrap: wrap; */
     justify-content: space-between;
     align-items: center;
+    /* height: 64px; */
   }
+
+  .logo{
+    /* height: 100%; */
+    
+  }
+  .logo img {
+    /* background-color: red; */
+  }
+  .comapany-logo{
+    height: 50px;
+    width: 100%;
+    /* background-color: red; */
+  }
+
+  
   .navigation-search{
     display: flex;
     border: 2px solid black;

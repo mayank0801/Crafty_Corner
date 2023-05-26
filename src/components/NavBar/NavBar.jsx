@@ -5,14 +5,15 @@ import { FaSearch} from "react-icons/fa";
 
 import { Navigate } from "react-router-dom";
 import {Link} from "react-router-dom"
+import image from "../../assets/craft-corner-logo.png"
 
 export default function NavBar() {
   return (
     <nav className="navigation-container">
       <div className="logo">
         <img
-          className="company-logo"
-          src="https://www.ecraftindia.com/cdn/shop/files/eCraftIndia_200x.png?v=1665868988"
+          className="comapany-logo"
+          src={image}
           alt="ecraft_logo"
         />
       </div>
