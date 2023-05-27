@@ -32,7 +32,7 @@ export default function CartCard({
       <div className="card-detail">
         <img src={imageUrl} alt="pro" />
         <div className="product-detail">
-          <p className="title">{productName}</p>
+          <p className="title-card">{productName}</p>
           <h2 className="currentPrice">₹{currentPrice}</h2>
           <del className="originalPrice">₹{originalPrice}</del>
           <p>
@@ -40,9 +40,9 @@ export default function CartCard({
             {qty}
             <button className="btn-rounded" onClick={()=>updateQuantity(_id,"increment",token,dispatch)}>+</button>
           </p>
-          <div className="">
-            <button onClick={()=>removeFromCart(_id,token,dispatch)}>Remove The Cart</button>
-            <button onClick={
+          <div className="btn-actionCard">
+            <button className="btn-action" onClick={()=>removeFromCart(_id,token,dispatch)}>Remove</button>
+            <button className="btn-action" onClick={
                 ()=>{
                     isInWishList(_id,wishlist)?
                     navigate("/wishlist"):wishlistHandler(product,token,dispatch)
