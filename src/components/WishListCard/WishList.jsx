@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { addtoCartHandler } from "../../Services/cartServices";
-// import "./CartCard.css";
+import "./WishListCard.css";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { isInCart } from "../../utils/utlis";
@@ -27,16 +27,16 @@ export default function WishListCard({
         removeFromWishList(product._id,token,dispatch);
     }
   return (
-    <div className="card-conatiner">
-      <div className="card-detail">
+    <div className="wishlistcard-conatiner">
+      <div className="wishlistcard-detail">
         <img src={imageUrl} alt="pro" />
-        <div className="product-detail">
-          <p className="title">{productName}</p>
+        <div className="wishlistproduct-detail">
+          <p className="product-title">{productName}</p>
           <h2 className="currentPrice">₹{currentPrice}</h2>
           <del className="originalPrice">₹{originalPrice}</del>
-          <div className="">
-            <button onClick={()=>removeFromWishList(_id,token,dispatch)}>Remove From WishList</button>
-            <button 
+          <div className="action-btn">
+          <button className="btn-action" onClick={()=>removeFromWishList(_id,token,dispatch)}>Remove From WishList</button>
+            <button className="btn-action"
             onClick={()=>{
                 isInCart(_id,cart)?
                 navigate("/cart"):cartHAndler(product,token,dispatch)

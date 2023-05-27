@@ -8,9 +8,17 @@ export const Cart = () => {
 
   const Bill=TotalcartPrice(cart)
 
- return(cart.length===0?(
- <div className='container-center'><h1 className='title'> Your Cart Is Empty ! ☹️</h1></div>):
-  (
+
+  // {cart.length===0&&<div className='container-center'><h1 className='title'> Your Cart Is Empty ! ☹️</h1></div>}
+  
+
+ return(
+  
+  <>
+  {cart.length===0?<h1 className='title text-center'> Your Cart Is Empty ! ☹️</h1>:
+  
+
+  
     <div className='conatiner-center'>
       <h1 className='title'>Shopping Cart ({cart.length})</h1>
     <div className='card-content'>
@@ -28,11 +36,11 @@ export const Cart = () => {
         <h1 className='title border-bottom'>Price Deatil</h1>
         <div className='flex-spacebetween'>
           <p className='title-bold'>Price({cart.length})</p>
-          <span className='bold'>{Bill.originalPrice}</span>
+          <span className='bold'>₹{Bill.originalPrice}</span>
         </div>
         <div className='flex-spacebetween'>
           <p className='title-bold'>Discount</p>
-          <span className='bold'>-{Bill.originalPrice-Bill.Price}</span>
+          <span className='bold'>- ₹{Bill.originalPrice-Bill.Price}</span>
         </div>
 
         <div className='flex-spacebetween border-bottom'>
@@ -42,9 +50,9 @@ export const Cart = () => {
 
         <div className='flex-spacebetween border-bottom'>
           <h4 className='title-bolder'>SUBTOTAL</h4>
-          <span className='bold'>{Bill.originalPrice}</span>
+          <span className='bold'>₹{Bill.originalPrice}</span>
         </div>
-        <div className='flex-spacebetween title-bold'>
+        <div className='flex-spacebetween title-bold '>
         <p>You Will Save {Bill.originalPrice-Bill.Price} rs</p>
         </div>
         </div>
@@ -52,5 +60,7 @@ export const Cart = () => {
       </div>
     </div>
     </div>
-  ))
+}
+    </>
+  )
 }

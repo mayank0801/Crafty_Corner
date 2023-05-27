@@ -11,3 +11,9 @@
 /* footer{
     text-align: center;
 } */
+
+
+.text-center{
+    text-align: center;
+    margin-top: 2rem;
+}

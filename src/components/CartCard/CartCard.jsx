@@ -26,7 +26,7 @@ export default function CartCard({
     }
 
     const navigate=useNavigate();
-
+  
   return (
     <div className="card-conatiner">
       <div className="card-detail">

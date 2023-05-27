@@ -2,3 +2,21 @@
     max-width: 80%;
     margin: 0 auto;
 }
+.wishlist-content{
+    margin-top: 1rem;
+    max-width: 50%;
+    margin: 1rem auto;
+}
+
+
+
+
+@media (width<=768px) {
+    
+    .wishlist-content{
+        max-width: 100%;
+        margin: 1rem auto;
+
+    }
+    
+}

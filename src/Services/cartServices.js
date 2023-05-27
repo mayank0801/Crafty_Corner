@@ -13,6 +13,8 @@ try {
       }
     }
     )
+
+    // response=cart[]
     dispatch({type:"ADD_TO_CART",payLoad:response.data.cart})
     console.log(response);
     
@@ -55,6 +57,9 @@ export const updateQuantity=async(productId,type,token,dispatch)=>{
             authorization: token
           }
         })
+
+
+        // qty:+
         console.log(response);
         dispatch({type:"UPDATE_CART",payLoad:response.data.cart})
     } catch (error) {

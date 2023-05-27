@@ -5,11 +5,19 @@ import WishListCard from '../../components/WishListCard/WishList';
 export const WishList = () => {
   const {state:{wishlist}}=useContext(DataContext);
   console.log(wishlist)
+  
   return (
-    <div className='container-center'>WishList{wishlist.length}
-    {
-      wishlist.map(wishlistItem=><WishListCard key={wishlistItem._id} product={wishlistItem}/>)
-    }
+    <>
+   {wishlist.length===0?<h1 className='text-center title'>Your WishList Is Empty ! ☹️</h1>:
+    <div className='container-center'>
+      <h1 className='title'>WishList({wishlist.length})</h1>
+      <div className='wishlist-content'>
+        {
+          wishlist.map(wishlistItem=><WishListCard key={wishlistItem._id} product={wishlistItem}/>)
+        }
     </div>
+    </div>
+      }
+      </>
   )
 }
