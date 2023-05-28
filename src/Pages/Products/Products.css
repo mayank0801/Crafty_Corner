@@ -1,4 +1,4 @@
-.product{
+.productt{
     display: flex;
     /* width: 80%; */
     /* margin: 0 auto; */
@@ -13,11 +13,16 @@
     /* width: 300px; */
     border: 1px solid black;
     align-self: flex-start;
+    /* marg */
     /* padding: 1rem; */
 }
 
 .productList-container{
+    
+    width: 78%;
+}
+.productList-container-content{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
+    /* align-items: flex-start; */
 }

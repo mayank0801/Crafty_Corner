@@ -13,18 +13,24 @@ export default function Products(){
     // console.log(dataToDisplay)
 
     return(
-        <div className="product">
+        
+        <div className="productt">
             <div className="filter-containerr">
-                {/* <h1>hdvhjdf</h1> */}
                 <FilterCard/>
             </div>
-            <div className="productList-container">
-            {
-                dataToDisplay.map(product=><ProductCard key={product._id} product={product}/>)
-            }
-            
+        <div className="productList-container">
+            <h3 className=" ">Showing All Product ({dataToDisplay.length})</h3>
+            <div className="productList-container-content">
+
+{
+    dataToDisplay.map(product=><ProductCard key={product._id} product={product}/>)
+}
+
+</div>
             </div>
+            
         
         </div>
+       
     )
 }
