@@ -5,7 +5,7 @@ export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
   const localStorageToken=JSON.parse(localStorage.getItem('user'));
-  console.log(localStorageToken);
+  // console.log(localStorageToken);
   const [token,setToken]=useState(localStorageToken?.token);
   const [user,setUser]=useState(localStorageToken?.userInfo);
   // console.log(token,user);
@@ -21,11 +21,11 @@ export default function AuthContextProvider({children}){
 
     const loginHandler = async (email,password) => {
         try {
-            console.log("Inside login Try")
+            // console.log("Inside login Try")
           const response = await axios.post(`/api/auth/login`, {
             email,password
           });
-          console.log(response,"Login Response");
+          // console.log(response,"Login Response");
           // saving the encodedToken in the localStorage
           if(response.status===201||response.status===200){
           navigate("/store")
@@ -40,7 +40,7 @@ export default function AuthContextProvider({children}){
 
 
       const signupHandler = async (userInfo) => {
-        console.log("Signup Hnadler with",user)
+        // console.log("Signup Hnadler with",user)
         try {
           const response = await axios.post(`/api/auth/signup`, {
            ...userInfo

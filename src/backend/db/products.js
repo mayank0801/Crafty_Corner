@@ -5,9 +5,11 @@ import { v4 as uuid } from "uuid";
  * You can add products of your wish with different attributes
  * */
 
+
+
 export const products = [
   {
-    _id: uuid(),
+    _id:uuid(),
     productName: "Papier-Mache Shahi Pankhi Key Holder",
     imageUrl:"https://www.ecraftindia.com/cdn/shop/products/KKH544_main_589a6751-770f-4fb5-9d89-a22425c573d8_180x.jpg?v=1571714729",
     currentPrice: 599,

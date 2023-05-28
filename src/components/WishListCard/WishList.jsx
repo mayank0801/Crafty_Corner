@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { addtoCartHandler } from "../../Services/cartServices";
+import { addtoCartHandler, updateQuantity } from "../../Services/cartServices";
 import "./WishListCard.css";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
@@ -23,7 +23,7 @@ export default function WishListCard({
     // console.log(productName,"Inside Cart",token);
 
     const cartHAndler=(product,token,dispatch)=>{
-        addtoCartHandler(product,token,dispatch);
+      isInCart(product._id,cart)?updateQuantity(product._id,"increment",token,dispatch):addtoCartHandler(product,token,dispatch);
         removeFromWishList(product._id,token,dispatch);
     }
   return (
@@ -38,9 +38,8 @@ export default function WishListCard({
           <button className="btn-action" onClick={()=>removeFromWishList(_id,token,dispatch)}>Remove From WishList</button>
             <button className="btn-action"
             onClick={()=>{
-                isInCart(_id,cart)?
-                navigate("/cart"):cartHAndler(product,token,dispatch)
-            }}>{isInCart(_id,cart)?"Already in Cart":"ADD TO CART"}</button>
+                cartHAndler(product,token,dispatch)
+            }}>{"ADD TO CART"}</button>
           </div>
         </div>
       </div>

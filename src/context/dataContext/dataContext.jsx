@@ -13,11 +13,11 @@ export default function DataProvider({children}){
     const getData=async ()=>{
         try{
         const {data:{categories}}=await axios.get("/api/categories")
-        console.log(categories,"responsecategory");
+        // console.log(categories,"responsecategory");
         dispatch({type:"INTIALIZE_CATEGORY",payLoad:categories})
         
         const {data:{products}}=await axios.get("/api/products")
-        console.log(products,"resProduct");
+        // console.log(products,"resProduct");
         dispatch({type:"INTIALIZE_PRODUCT",payLoad:products})
         }
         catch(e){

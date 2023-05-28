@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { addToWishList } from "../../Services/wishListServices";
+import { useNavigate } from "react-router";
 export default function ProductCard({product}) {
   const {token}=useContext(AuthContext);
   const {dispatch}=useContext(DataContext);
@@ -17,13 +18,16 @@ export default function ProductCard({product}) {
       rating,
       categoryName
     } = product;
+
+
+    const navigate=useNavigate();
     return (
       <div className="product-container">
         <button>
           <AiOutlineHeart className="wishlist-icon" onClick={()=>addToWishList(product,token,dispatch)}/>
           </button>
         <div className="product-image-detail">
-          <img className="product-image" src={imageUrl} alt="productImage" />
+          <img className="product-image" src={imageUrl} alt="productImage"  onClick={()=>navigate(`/store/${_id}`)}/>
         </div>
         <div className="product-details">
           <p className="product-title">{productName}</p>

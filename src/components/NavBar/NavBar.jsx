@@ -22,7 +22,7 @@ export default function NavBar() {
       <div className="navigation-search">
         
           <input className="search-bar" type="search" placeholder="Search Products " />
-          <FaSearch/>
+          <FaSearch />
        
       </div>
 

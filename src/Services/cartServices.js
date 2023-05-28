@@ -3,6 +3,7 @@ import axios from "axios"
 
 
 export const addtoCartHandler=async(product,token,dispatch)=>{
+    console.log("DD",product,token,dispatch)
 try {
     const response=await axios.post("/api/user/cart",{
         product
