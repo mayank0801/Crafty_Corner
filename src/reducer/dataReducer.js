@@ -56,6 +56,14 @@ export const reducer=(state,action)=>{
             return {...state,wishlist:[...action.payLoad]};
         case "UPDATE_WISHLIST":
             return {...state,wishlist:[...action.payLoad]};
+        case "CLEAR_FILTER":
+            console.log("calear Filyter Called")
+            return {...state,filters:{
+                sort:"",
+                rating:0,
+                categorySelected:[],
+                price:9000
+            }}
         default:
             return {...state};
     }

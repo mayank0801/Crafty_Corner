@@ -4,7 +4,6 @@ import { DataContext } from "../../context/dataContext/dataContext";
 
 export default function FilterCard() {
   const {state,dispatch}=useContext(DataContext)
-  const category = ["A", "B", "C", "D"];
   const sortType = ["High To Low", "Low To High"];
   const rating = [5, 4, 3, 2, 1];
     const MIN_VALUE=0;
@@ -14,7 +13,7 @@ export default function FilterCard() {
     <div className="filter-container">
       <div className="filter-heading">
         <h4>Filter</h4>
-        <button className="btn-primary">Clear </button>
+        <button className="btn-clear" onClick={()=>dispatch({type:"CLEAR_FILTER"})}>Clear </button>
       </div>
     
 
@@ -101,7 +100,7 @@ export default function FilterCard() {
               <label key={_id} className="input-filter">
                 <input type="checkbox"
                 id={categoryName}
-                
+                checked={state.filters.categorySelected.includes(categoryName)}
                 onClick={()=>dispatch({
                     type:"FILTER_CHANGE",
                     payLoad:{
@@ -110,7 +109,7 @@ export default function FilterCard() {
                     }
                 })} 
                 />
-                <span>{categoryName}</span>
+                <span> {categoryName}</span>
               </label>
             );
           })}
