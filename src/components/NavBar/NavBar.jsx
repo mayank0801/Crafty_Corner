@@ -3,11 +3,26 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { FaSearch} from "react-icons/fa";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom"
 import image from "../../assets/craft-corner-logo.png"
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../../context/dataContext/dataContext";
 
 export default function NavBar() {
+
+  const [searchText,setSearchText]=useState("");
+  const {state:{filters},dispatch}=useContext(DataContext);
+  const navigate=useNavigate();
+
+
+  useEffect(()=>{
+    dispatch({type:"FILTER_CHANGE",payLoad:{FilterType:"searchValue",value:searchText.trim()}})
+    if(searchText.trim().length>0){
+      navigate("/store")
+    }
+   
+  },[searchText])
   return (
     <nav className="navigation-container">
       <div className="logo">
@@ -21,7 +36,7 @@ export default function NavBar() {
 
       <div className="navigation-search">
         
-          <input className="search-bar" type="search" placeholder="Search Products " />
+          <input className="search-bar" name="searchValue" value={filters.searchValue}  type="text" placeholder="Search Products " onChange={(e)=>setSearchText(e.target.value)} />
           <FaSearch />
        
       </div>

@@ -12,6 +12,9 @@ const filterData=(state)=>{
     });
     console.log(filteredData,"checkPoint 3")
     filteredData=state.filters.sort!==""?[...filteredData].sort((a,b)=>state.filters.sort==="High To Low"?b.currentPrice-a.currentPrice:a.currentPrice-b.currentPrice):filteredData;
+    
+    filteredData=state.filters.searchValue!==""?[...filteredData].filter((item)=>item.productName.includes(state.filters.searchValue)||item.categoryName.includes(state.filters.searchValue)):filteredData;
+    
     return filteredData;
 }
 

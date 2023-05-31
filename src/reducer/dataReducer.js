@@ -3,7 +3,8 @@ export const initialState={
         sort:"",
         rating:0,
         categorySelected:[],
-        price:9000
+        price:9000,
+        searchValue:""
     },
     products:[],
     categories:[],

@@ -70,20 +70,20 @@ export default function FilterCard() {
           <h4>Rating</h4>
         </div>
         <div className="filter-input">
-          {rating.map((rating) => {
+          {rating.map((ratingg) => {
             return (
               <lablel key={rating} className="input-filter">
-                <input type="radio"
+                <input type="checkbox"
                 name="rating"
-                checked={state.filters.rating==rating}
+                checked={state.filters.rating===ratingg}
                 onClick={()=>dispatch({
                     type:"FILTER_CHANGE",
                     payLoad:{
                         FilterType:"rating",
-                        value:rating
+                        value:ratingg
                     }
                 })} />
-                <span>{rating} star</span>
+                <span>{ratingg} star</span>
               </lablel>
             );
           })}
