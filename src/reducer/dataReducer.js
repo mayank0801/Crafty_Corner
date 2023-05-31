@@ -64,6 +64,8 @@ export const reducer=(state,action)=>{
                 categorySelected:[],
                 price:9000
             }}
+        case "UPDATE_ADDRESS":
+            return {...state,address:state.address.map((add)=>add._id===action.payLoad._id?action.payLoad:add)};
         default:
             return {...state};
     }

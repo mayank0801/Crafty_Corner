@@ -4,19 +4,10 @@ import { v4 as uuid } from "uuid";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { useNavigate } from "react-router";
 
-export default function NewAddressCard({showFormHandler}) {
+export default function NewAddressCard({showFormHandler,setAddress,address,isUpdate}) {
+  console.log(isUpdate);
     // const [isShowAddressForm,setShowAddressForm]=useState(false);
     const {state,dispatch}=useContext(DataContext);
-    const [address,setAddress]=useState({
-        _id:uuid(),
-        Name:"",
-        Address:"",
-        City:"",
-        State:"",
-        Country:"",
-        Postal_Code:"",
-        Mob_No:""
-    });
     const navigate =useNavigate();
 
     const formHandler=(e)=>{
@@ -38,6 +29,7 @@ export default function NewAddressCard({showFormHandler}) {
         <input name="Mob_No" type="number" value={address.Mob_No} placeholder="Enter Mobile Number" onChange={(e)=>formHandler(e)}/>
         <div className="address-btn">
           <button className="btn-save" onClick={()=>{
+            isUpdate?dispatch({type:"UPDATE_ADDRESS",payLoad:address}):
             dispatch({type:"ADD_NEW_ADDRESS",payLoad:address})
             setAddress({...address, 
                 _id:uuid(),
@@ -49,7 +41,7 @@ export default function NewAddressCard({showFormHandler}) {
                 Postal_Code:"",
                 Mob_No:"",})
             showFormHandler(false);
-            }}>Save</button>
+            }}>{isUpdate?"Update":"Save"}</button>
           <button className="btn-cancel" onClick={()=>showFormHandler(false)}>Cancel</button>
         </div>
       </div>

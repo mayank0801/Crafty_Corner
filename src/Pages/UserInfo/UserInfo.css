@@ -5,10 +5,13 @@
 .displayFlex {
     z-index: 3;
     position: absolute;
-    top: 10%;
+    top: 20%;
     left: 15%;
     width: 70%;
     margin: 0 auto;
+}
+.blur-background{
+    filter: blur(3px);
 }
 .user-info-container{
     width: 80%;
@@ -37,4 +40,22 @@ text-align: center;
     padding-bottom: 0.8rem;
     border-bottom:1px solid black;
     margin-bottom: 1rem;
+}
+.btn-Add{
+    border: none;
+    font-size: 1rem;
+    color: black;
+    font-weight:bolder;
+    background-color: white;
+    margin-top: 1rem;
+}
+
+
+.address-container{
+    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.addressCard-container{
+    padding: 0.5rem 1rem;
+    margin: 1rem;
 }
