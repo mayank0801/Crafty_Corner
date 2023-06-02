@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
+import { WishList } from "../../Pages/WishList/WishList";
 export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
@@ -25,14 +26,7 @@ export default function AuthContextProvider({children}){
           const response = await axios.post(`/api/auth/login`, {
             email,password
           });
-          // console.log(response,"Login Response");
-          // saving the encodedToken in the localStorage
-          if(response.status===201||response.status===200){
-          navigate("/store")
-          setToken(response.data.encodedToken);
-          setUser(response.data.foundUser)
-          localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
-          }
+          return response;
         } catch (error) {
           console.log(error);
         }
@@ -46,15 +40,21 @@ export default function AuthContextProvider({children}){
            ...userInfo
           });
           console.log(response);
-          if(response.status===201)
+          if(response.status===201||response.status===200)
           {
-          localStorage.setItem("token", response.data.encodedToken);
-          navigate("/store")
+            setToken(response.data.encodedToken);
+            setUser(response.data.foundUser)
+            localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
+            navigate("/store")
+          
           }
         } catch (error) {
           console.log(error);
         }
       };
+
+
+      // userfound->cart->WishListencoded
 
 
       const logoutHandler=()=>{
@@ -67,6 +67,6 @@ export default function AuthContextProvider({children}){
 
 
     return(
-        <AuthContext.Provider value={{loginHandler,signupHandler,token,user,logoutHandler}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{loginHandler,signupHandler,token,user,logoutHandler,setToken,setUser}}>{children}</AuthContext.Provider>
     )
 }

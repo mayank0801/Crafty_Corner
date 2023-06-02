@@ -15,7 +15,10 @@ try {
     }
     )
 
+
+    // response cart=>
     // response=cart[]
+    console.log(response)
     dispatch({type:"ADD_TO_CART",payLoad:response.data.cart})
     console.log(response);
     

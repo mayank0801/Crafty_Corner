@@ -13,6 +13,11 @@ export const initialState={
     wishlist:[]
 }
 
+// cart
+
+// logout->cart clear
+//dusara cart->user.cart
+
 
 // StorageEvent
 
@@ -33,6 +38,14 @@ export const reducer=(state,action)=>{
         case "INTIALIZE_PRODUCT":
             // console.log("Product reduce is called");
             return {...state,products:action.payLoad}
+        case "INTIALIZE_CART":
+            return {...state,cart:[...action.payLoad]};
+        case "INTIALIZE_WISHLIST":
+            return {...state,wishlist:[...action.payLoad]};
+        case "CLEAR_CART":
+            return {...state,cart:[]};
+        case "CLEAR_WISHLIST":
+            return {...state,wishlist:[]};
         case "FILTER_CHANGE":
             console.log(action.payLoad,"Filter Changed")
             if(action.payLoad.FilterType==="categorySelected"){
@@ -67,6 +80,8 @@ export const reducer=(state,action)=>{
             }}
         case "UPDATE_ADDRESS":
             return {...state,address:state.address.map((add)=>add._id===action.payLoad._id?action.payLoad:add)};
+        case "CLEAR_CART_WISHLIST":
+            return {...state,cart:[],wishlist:[]};
         default:
             return {...state};
     }

@@ -39,7 +39,9 @@ const [formaddress,setAddress]=useState({
       <h3>Email:{email}</h3>
 
       <h2>Account Setting</h2>
-      <button className='btn-primary' onClick={logoutHandler}>Logout</button>
+      <button className='btn-primary' onClick={()=>{
+        dispatch({type:"CLEAR_CART_WISHLIST"});
+        logoutHandler()}}>Logout</button>
     </div>
     )
   }
