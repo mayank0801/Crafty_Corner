@@ -1,0 +1,84 @@
+.order-content{
+    display: flex;
+    justify-content: space-between;
+}
+.container-order{
+    margin-top:1rem ;
+    /* border: 1px solid rgb(221, 81, 81); */
+}
+.order-address{
+    width: 50%;
+    /* display: flex; */
+}
+.order-summary{
+    margin-top: 1rem;
+}
+.order-addressCard{
+    display: flex;
+    /* justify-content: space-around; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.select-input{
+    display: flex;
+}
+.address-Card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+}
+.order-content{
+    margin-top: 2rem;
+}
+.order-detail{
+    width: 420px;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.order-items{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textAlignCenter{
+    text-align: center;
+}
+.margin-zero{
+margin: 0;
+}
+.marginTop{
+    margin: 1rem;
+}
+.alignSelfStart{
+    justify-self: flex-start;
+}
+.order-address{
+    width: 500px;
+}
+.btn-address{
+    border: none;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    font-weight: 800;
+}
+.btn-address:hover{
+    cursor: pointer;
+}
+.border-line{
+    border-bottom: 1px solid black;
+    /* margin-top: 0.5rem; */
+    margin-bottom: 0.75rem;
+}
+
+
+
+@media (width<=768px) {
+    .order-content{
+        display: block;
+    }
+    .order-address{
+        width: 90%;
+    }
+    .order-detail{
+        width: 90%;
+    }
+}

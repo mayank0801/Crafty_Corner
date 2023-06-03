@@ -13,6 +13,8 @@ import { Cart } from "./Pages/Cart/Cart";
 import Mockman from "mockman-js";
 import { WishList } from "./Pages/WishList/WishList";
 import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
+import { Checkout } from "./Pages/CheckOut/Checkout";
+import { Order } from "./Pages/OrderSummary/Order";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path="/mockman" element={<Mockman/>}/>
             <Route path="/wishlist" element={<WishList/>}/>
             <Route path="/store/:productId" element={<ProductDetail/>}/>
+            <Route path="/checkout" element={<Checkout/>}/>
+            <Route path="/order" element={<Order/>}/>
         </Routes>
 
     </div>

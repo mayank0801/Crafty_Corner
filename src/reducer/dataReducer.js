@@ -8,7 +8,16 @@ export const initialState={
     },
     products:[],
     categories:[],
-    address:[],
+    address:[{
+        _id:"1",
+        Name:"Mayank Kumar",
+        Address:"Ansal Api Sector 114 Kharar Road",
+        City:"Mohali",
+        State:"Punjab",
+        Country:"India",
+        Postal_Code:"140307",
+        Mob_No:"9110971506", 
+    }],
     cart:[],
     wishlist:[]
 }

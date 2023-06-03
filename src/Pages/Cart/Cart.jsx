@@ -3,11 +3,12 @@ import { DataContext } from '../../context/dataContext/dataContext'
 import "./Cart.css"
 import CartCard from '../../components/CartCard/CartCard';
 import { TotalcartPrice } from '../../utils/utlis';
+import { useNavigate } from 'react-router';
 export const Cart = () => {
   const {state:{cart}}=useContext(DataContext);
 
   const Bill=TotalcartPrice(cart)
-
+  const navigate=useNavigate();
 
   // {cart.length===0&&<div className='container-center'><h1 className='title'> Your Cart Is Empty ! ☹️</h1></div>}
   
@@ -56,7 +57,7 @@ export const Cart = () => {
         <p>You Will Save {Bill.originalPrice-Bill.Price} rs</p>
         </div>
         </div>
-          <button className='btn-deafult'>CheckOut</button>
+          <button className='btn-deafult' onClick={()=>navigate("/checkout")}>CheckOut</button>
       </div>
     </div>
     </div>
