@@ -4,6 +4,8 @@ import "./Login.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
+import {AiFillEye,AiFillEyeInvisible} from "react-icons/ai"
+
 
 export default function Login() {
 
@@ -14,7 +16,7 @@ export default function Login() {
     console.log(email);
     console.log(password);
     const navigate=useNavigate();
-
+    const [showPassword,setShowPassword]=useState(false);
     const login=async(email,password)=>{
       try {
         const response=await loginHandler(email,password);
@@ -47,8 +49,12 @@ export default function Login() {
             <input type="email" value={email}  placeholder="test@gmail.com" onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <div className="input-container">
-            <label htmlFor="password">Password:</label>
-            <input type="password" value={password} placeholder="*****" onChange={(e)=>setpassword(e.target.value)}/>
+            <label htmlFor="password">Password:
+            <span className="password-container">
+            <input type={showPassword?"text":"password"} value={password} placeholder="*****" onChange={(e)=>setpassword(e.target.value)}/>
+            {showPassword?<AiFillEye onClick={()=>setShowPassword(false)}/>:<AiFillEyeInvisible onClick={()=>setShowPassword(true)}/>}
+            </span>
+            </label>
           </div>
         </main>
         <footer>

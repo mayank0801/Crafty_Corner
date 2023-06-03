@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { MdNavigateNext } from "react-icons/md";
 import "./SignUp.css";
 import { useContext, useState } from "react";
+import {AiFillEye,AiFillEyeInvisible} from "react-icons/ai"
 
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 
@@ -9,6 +10,7 @@ export default function SignUp() {
 
 
     const {signupHandler}=useContext(AuthContext);
+    const [showPassword,setShowPassword]=useState(false);
     const [userInfo,setUserInfo]=useState({firstName:"",lastName:"",email:"",password:""});
     const formHandler=(e)=>{
         const name=e.target.name;
@@ -43,7 +45,10 @@ export default function SignUp() {
           </div>
           <div className="input-container">
             <label htmlFor="password">Password:</label>
-            <input type="password" name="password" value={userInfo.password} placeholder="*****" onChange={(e)=>formHandler(e)}/>
+            <span className="password-container">
+            <input type={showPassword?"text":"password"} name="password" value={userInfo.password} placeholder="*****" onChange={(e)=>formHandler(e)}/>
+            {showPassword?<AiFillEye onClick={()=>setShowPassword(false)}/>:<AiFillEyeInvisible onClick={()=>setShowPassword(true)}/>}
+            </span>
           </div>
         </main>
         <footer>
