@@ -19,11 +19,11 @@ import { Order } from "./Pages/OrderSummary/Order";
 function App() {
   return (
     <div className="App">
-        {/* <Home/> */}
-        <div style={{backgroundColor:"#f1eded"}}>
-        <NavBar />
+       
+        <div className="navcontainer" style={{backgroundColor:"#f1eded"}}>
+          <NavBar />
         </div>
-        {/* <Products/> */}
+        <div className="main-content">
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/store" element={<Products/>}/>
@@ -37,7 +37,7 @@ function App() {
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/order" element={<Order/>}/>
         </Routes>
-
+        </div>
     </div>
   );
 }

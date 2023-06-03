@@ -26,7 +26,7 @@ export default function ProductCard({product}) {
 
     const cartHAndler=(product,token,dispatch)=>{
       isPresentCart?navigate("/cart"):addtoCartHandler(product,token,dispatch);
-        removeFromWishList(product._id,token,dispatch);
+        // removeFromWishList(product._id,token,dispatch);
     }
 
     return (

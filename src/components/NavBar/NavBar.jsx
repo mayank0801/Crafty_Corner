@@ -26,29 +26,25 @@ export default function NavBar() {
   return (
     <nav className="navigation-container">
       <div className="logo">
+        <Link to="/">
         <img
           className="comapany-logo"
           src={image}
           alt="ecraft_logo"
         />
+        </Link>
       </div>
-
-
       <div className="navigation-search">
-        
           <input className="search-bar" name="searchValue" value={filters.searchValue}  type="text" placeholder="Search Products " onChange={(e)=>setSearchText(e.target.value)} />
           <FaSearch />
-       
       </div>
-
-
       <div className="navigation-pages">
         <Link className="navigate-link product" to="/store">Products</Link>
         <Link className="navigate-link" to="/wishlist">
         <AiOutlineHeart size={30} />
         </Link>
         <Link className="navigate-link" to="/cart">
-        <AiOutlineShoppingCart size={30} />
+        <AiOutlineShoppingCart size={30}  />
         </Link>
         <Link to="/login" className="navigate-link">
         <CgProfile size={30} />
