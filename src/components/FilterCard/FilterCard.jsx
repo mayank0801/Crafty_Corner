@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./FilterCard.css";
 import { DataContext } from "../../context/dataContext/dataContext";
 import {IoMdClose} from "react-icons/io"
+import {AiFillStar} from "react-icons/ai"
 export default function FilterCard({setshowFilter,isshowFilter}) {
   console.log(setshowFilter,"props")
   const {state,dispatch}=useContext(DataContext)
@@ -12,17 +13,16 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
 
   return (
     <div className="filter-container">
-      <div className="filter-heading">
+      <div className="filter-heading borderBottom">
         {isshowFilter&&<IoMdClose onClick={()=>setshowFilter(false)} size={30}/>}
           <h4>Filter</h4>
-        
       </div>
     
 
 
-    <div className="filter-price">
+    <div className="filter-input-container borderBottom">
     <div className="filter-title">
-        <h4>Price</h4>
+        <p>Price</p>
     </div>
     <div className="filter-input">
         <label>
@@ -72,24 +72,29 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
           <h4>Rating</h4>
         </div>
         <div className="filter-input">
-          {rating.map((ratingg) => {
-            return (
-              <lablel key={rating} className="input-filter">
-                <input type="checkbox"
-                name="rating"
-                checked={state.filters.rating===ratingg}
-                onClick={()=>dispatch({
-                    type:"FILTER_CHANGE",
-                    payLoad:{
-                        FilterType:"rating",
-                        value:ratingg
-                    }
-                })} />
-                <span>{ratingg} star</span>
-              </lablel>
-            );
-          })}
-        </div>
+
+        <label>
+           <p className="rating"><span>1 <AiFillStar/></span><span>2<AiFillStar/></span></p>
+            <input  type="range" min={1} max={5} list="steplist" step={1}
+            value={state.filters.rating}
+            onChange={(e)=>dispatch({
+                type:"FILTER_CHANGE",
+                payLoad:{
+                    FilterType:"price",
+                    value:e.target.value
+                }
+            })}
+            />
+            <datalist id="steplist">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+
+            </datalist>
+        </label>
+    </div>
       </div>
 
       <div className="filter-type filter-category">
