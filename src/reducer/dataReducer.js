@@ -91,6 +91,9 @@ export const reducer=(state,action)=>{
             return {...state,address:state.address.map((add)=>add._id===action.payLoad._id?action.payLoad:add)};
         case "CLEAR_CART_WISHLIST":
             return {...state,cart:[],wishlist:[]};
+        case "CLEAR_CATEGORY":{
+            return {...state,filters:{...state.filters,categorySelected:[]}}
+        }
         default:
             return {...state};
     }
