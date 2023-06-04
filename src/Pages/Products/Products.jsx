@@ -23,28 +23,37 @@ export default function Products(){
     return(
         
         <div className="productt">
-           
-            <button onClick={()=>clikHandler()}>
+           {/* <button onClick={()=>clikHandler()}>
             <IoFilter className="filtericon"  size={30} />
             </button>
-                   <div  className={isshowFilter?"mobile-nav displayfilter":"displayNone"}>
-                <FilterCard />
-            </div>
 
-           
-                
+
+
+
+            <div  className={isshowFilter?"mobile-nav showModal":"mobile-nav"}>
+                <FilterCard helper={setshowFilter}/>
+            </div> */}
+
+       
+            
             <div  className="filter-containerr">
                 <FilterCard />
             </div>
         <div className="productList-container">
+            <div className="flexSpaceBetween">
             <h3 className=" ">Showing All Product ({dataToDisplay.length})</h3>
+            <button onClick={()=>clikHandler()}>
+            <IoFilter className="filtericon"  size={30} />
+            </button>
+                   <div  className={isshowFilter?"mobile-nav showModal":"mobile-nav"}>
+                <FilterCard  setshowFilter={setshowFilter} isshowFilter={isshowFilter}/>
+            </div>
+            </div>
             <div className="productList-container-content">
-
-{
-    dataToDisplay.map(product=><ProductCard key={product._id} product={product}/>)
-}
-
-</div>
+                {
+                    dataToDisplay.map(product=><ProductCard key={product._id} product={product}/>)
+                }
+            </div>
             </div>
             
         

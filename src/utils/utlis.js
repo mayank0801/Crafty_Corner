@@ -16,3 +16,9 @@ export const TotalcartPrice=(cart)=>{
     return cart.reduce((acc,{originalPrice,currentPrice,qty})=>({...acc,Price:acc.Price+(currentPrice*qty),originalPrice:acc.originalPrice+(originalPrice*qty)}),{originalPrice:0,Price:0});
 }
 // export co
+
+
+
+export const DiscountPercent=(originalPrice,currentPrice)=>{
+    return Math.trunc(((originalPrice-currentPrice)*100)/originalPrice)
+}

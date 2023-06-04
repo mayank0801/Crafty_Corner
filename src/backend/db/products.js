@@ -15,6 +15,8 @@ export const products = [
     currentPrice: 599,
     originalPrice: 1099,
     rating:4,
+    ratingCount:10002,
+    review:500,
     categoryName: "Wooden HandiCraft",
   },
   {
@@ -24,6 +26,8 @@ export const products = [
     currentPrice: 999,
     originalPrice: 2999,
     rating:4.5,
+    ratingCount:10002,
+    review:500,
     categoryName: "Wooden HandiCraft",
   },
   {
@@ -33,6 +37,8 @@ export const products = [
     currentPrice: 1195,
     originalPrice: 1699,
     rating:5,
+    ratingCount:10002,
+    review:500,
     categoryName: "Wooden HandiCraft",
   },
   {
@@ -42,6 +48,8 @@ export const products = [
     currentPrice: 399,
     originalPrice: 599,
     rating:5,
+    ratingCount:10002,
+    review:500,
     categoryName: "Marble HandiCraft",
   },
   {
@@ -51,6 +59,8 @@ export const products = [
     currentPrice: 499,
     originalPrice: 599,
     rating:4.5,
+    ratingCount:10002,
+    review:500,
     categoryName: "Marble HandiCraft",
   },
   {
@@ -60,6 +70,8 @@ export const products = [
     currentPrice: 8995,
     originalPrice: 14999,
     rating:4,
+    ratingCount:10002,
+    review:500,
     categoryName: "Iron HandiCraft",
   },
   {
@@ -69,6 +81,8 @@ export const products = [
     currentPrice: 6995,
     originalPrice: 12999,
     rating:4.9,
+    ratingCount:10002,
+    review:500,
     categoryName: "Iron HandiCraft",
   },
 
@@ -79,6 +93,8 @@ export const products = [
     currentPrice: 349,
     originalPrice: 699,
     rating:4.8,
+    ratingCount:10002,
+    review:500,
     categoryName: "Metal HandiCraft",
   },
   {
@@ -88,6 +104,8 @@ export const products = [
     currentPrice: 799,
     originalPrice: 1299,
     rating:4,
+    ratingCount:10002,
+    review:500,
     categoryName: "Metal HandiCraft",
   },
 ];

@@ -7,10 +7,11 @@
   }
   .filter-heading {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     font-size: 1.1rem;
     font-weight: 800;
     margin-bottom: 1rem;
+    /* padding-right: 1rem; */
     /* padding-bottom: 0.5rem; */
     /* border-bottom: 1px dotted black; */
   }

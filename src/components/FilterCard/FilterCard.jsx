@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import "./FilterCard.css";
 import { DataContext } from "../../context/dataContext/dataContext";
-
-export default function FilterCard() {
+import {IoMdClose} from "react-icons/io"
+export default function FilterCard({setshowFilter,isshowFilter}) {
+  console.log(setshowFilter,"props")
   const {state,dispatch}=useContext(DataContext)
   const sortType = ["High To Low", "Low To High"];
   const rating = [5, 4, 3, 2, 1];
@@ -12,8 +13,9 @@ export default function FilterCard() {
   return (
     <div className="filter-container">
       <div className="filter-heading">
-        <h4>Filter</h4>
-        <button className="btn-clear" onClick={()=>dispatch({type:"CLEAR_FILTER"})}>Clear </button>
+        {isshowFilter&&<IoMdClose onClick={()=>setshowFilter(false)} size={30}/>}
+          <h4>Filter</h4>
+        
       </div>
     
 
@@ -114,6 +116,9 @@ export default function FilterCard() {
             );
           })}
         </div>
+
+        <button className="btn-clear" onClick={()=>dispatch({type:"CLEAR_FILTER"})}>Clear </button>
+
       </div>
     </div>
   );
