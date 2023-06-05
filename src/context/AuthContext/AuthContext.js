@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
 import { WishList } from "../../Pages/WishList/WishList";
+import { toast } from "react-toastify";
 export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
@@ -45,6 +46,7 @@ export default function AuthContextProvider({children}){
             setToken(response.data.encodedToken);
             setUser(response.data.foundUser)
             localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
+            toast.success("SignUp SucessFull");
             navigate("/store")
           
           }
@@ -62,6 +64,7 @@ export default function AuthContextProvider({children}){
         localStorage.removeItem('user');
         setToken(false)
         setUser(false)
+        toast.success("Logout Sucessfully")
         navigate('/login');
       }
 

@@ -31,12 +31,15 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 99999;
+    z-index: 10;
 }
 .main-content{
     margin:3.5rem 0;
     /* padding-top: 5rem; */
 }
+.toast-container {
+    /* margin-top: 15rem; */
+  }
 
 
 @media (width<=800px) {

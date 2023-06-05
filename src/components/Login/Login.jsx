@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import {AiFillEye,AiFillEyeInvisible} from "react-icons/ai"
+import { toast } from "react-toastify";
 
 
 export default function Login() {
@@ -27,6 +28,7 @@ export default function Login() {
           setUser(response.data.foundUser);
           dispatch({type:"INTIALIZE_CART",payLoad:response.data.foundUser.cart})
           dispatch({type:"INITALIZE_WISHLIST",payLoad:response.data.foundUser.wishlist});
+          toast.success("Sign In SucessFull");
           localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
         }
         

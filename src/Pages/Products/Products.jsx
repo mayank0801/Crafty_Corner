@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Products.css"
 import {IoFilter} from "react-icons/io5";
 import filterData from "../../utils/filterFunction";
+import { ToastContainer } from "react-toastify";
 
 export default function Products(){
     const {state}=useContext(DataContext);
@@ -21,8 +22,9 @@ export default function Products(){
     }
 
     return(
-        
+   
         <div className="productt">
+
            {/* <button onClick={()=>clikHandler()}>
             <IoFilter className="filtericon"  size={30} />
             </button>
@@ -58,6 +60,6 @@ export default function Products(){
             
         
         </div>
-       
+      
     )
 }

@@ -1,5 +1,7 @@
 import axios from "axios"
-
+import { toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+import { TOAST_PARAMS } from "../utils/utlis"
 
 
 export const addtoCartHandler=async(product,token,dispatch)=>{
@@ -14,12 +16,8 @@ try {
       }
     }
     )
-
-
-    // response cart=>
-    // response=cart[]
-    // console.log(response)
     dispatch({type:"ADD_TO_CART",payLoad:response.data.cart})
+    toast.success("Added To Cart",TOAST_PARAMS);
     console.log(response);
     
 } catch (error) {
@@ -41,6 +39,7 @@ export const removeFromCart=async(productId,token,dispatch)=>{
         })
         console.log(response);
         dispatch({type:"REMOVE_FROM_CART",payLoad:response.data.cart})
+        toast.warn("Removed From cart",TOAST_PARAMS);
     } catch (error) {
         console.log(error)
     }
@@ -66,6 +65,7 @@ export const updateQuantity=async(productId,type,token,dispatch)=>{
         // qty:+
         console.log(response);
         dispatch({type:"UPDATE_CART",payLoad:response.data.cart})
+        toast.success("Added one more Quantity",TOAST_PARAMS);
     } catch (error) {
         console.log(error)
     }

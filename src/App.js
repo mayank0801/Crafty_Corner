@@ -15,14 +15,17 @@ import { WishList } from "./Pages/WishList/WishList";
 import { ProductDetail } from "./Pages/ProductDetail/ProductDetail";
 import { Checkout } from "./Pages/CheckOut/Checkout";
 import { Order } from "./Pages/OrderSummary/Order";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
-       
+   
         <div className="navcontainer" style={{backgroundColor:"#f1eded"}}>
           <NavBar />
         </div>
+        
         <div className="main-content">
         <Routes>
             <Route path="/" element={<Home/>}/>
@@ -38,6 +41,9 @@ function App() {
             <Route path="/order" element={<Order/>}/>
         </Routes>
         </div>
+
+
+        <ToastContainer/>
     </div>
   );
 }
