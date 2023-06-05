@@ -41,7 +41,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
 
 
 
-      <div className="filter-sort">
+      <div className="filter-input-container borderBottom">
         <div className="filter-title">
           <h4>Sort</h4>
         </div>
@@ -67,20 +67,20 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
         </div>
       </div>
 
-      <div className="filter-type filter-rating">
+      <div className="filter-input-container borderBottom">
         <div className="filter-title">
-          <h4>Rating</h4>
+          <p>Rating</p>
         </div>
         <div className="filter-input">
 
         <label>
-           <p className="rating"><span>1 <AiFillStar/></span><span>2<AiFillStar/></span></p>
+           <p className="rating"><span>1 <AiFillStar/></span><span>5<AiFillStar/></span></p>
             <input  type="range" min={1} max={5} list="steplist" step={1}
             value={state.filters.rating}
             onChange={(e)=>dispatch({
                 type:"FILTER_CHANGE",
                 payLoad:{
-                    FilterType:"price",
+                    FilterType:"rating",
                     value:e.target.value
                 }
             })}
@@ -97,7 +97,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
     </div>
       </div>
 
-      <div className="filter-type filter-category">
+      <div className="filter-input-container borderBottom">
         <div className="filter-title">
           <h4>Category</h4>
         </div>
@@ -116,7 +116,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
                     }
                 })} 
                 />
-                <span> {categoryName}</span>
+                {categoryName}
               </label>
             );
           })}

@@ -3,6 +3,8 @@ import "./NewAddress.css";
 import { v4 as uuid } from "uuid";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { TOAST_PARAMS } from "../../utils/utlis";
 
 export default function NewAddressCard({showFormHandler,setAddress,address,isUpdate}) {
   console.log(isUpdate);
@@ -14,7 +16,29 @@ export default function NewAddressCard({showFormHandler,setAddress,address,isUpd
         const {name,value}=e.target;
         setAddress({...address,[name]:value});
     }
-    console.log(address)
+    const addressHandler=(address)=>{
+      
+      if(isUpdate)
+      {
+        dispatch({type:"UPDATE_ADDRESS",payLoad:address})
+        toast.success("Address Updated",TOAST_PARAMS);
+      }
+      else{
+      dispatch({type:"ADD_NEW_ADDRESS",payLoad:address})
+      toast.success("Added A New Address",TOAST_PARAMS)
+      }
+      setAddress({...address, 
+          _id:uuid(),
+          Name:"",
+          Address:"",
+          City:"",
+          State:"",
+          Country:"",
+          Postal_Code:"",
+          Mob_No:"",})
+      showFormHandler(false);
+    }
+    
 
   return (
     <div className="signup-container">
@@ -28,20 +52,7 @@ export default function NewAddressCard({showFormHandler,setAddress,address,isUpd
         <input name="Postal_Code" value={address.Postal_Code} type="number" placeholder="Enter Postal Code" onChange={(e)=>formHandler(e)}/>
         <input name="Mob_No" type="number" value={address.Mob_No} placeholder="Enter Mobile Number" onChange={(e)=>formHandler(e)}/>
         <div className="address-btn">
-          <button className="btn-save" onClick={()=>{
-            isUpdate?dispatch({type:"UPDATE_ADDRESS",payLoad:address}):
-            dispatch({type:"ADD_NEW_ADDRESS",payLoad:address})
-            setAddress({...address, 
-                _id:uuid(),
-                Name:"",
-                Address:"",
-                City:"",
-                State:"",
-                Country:"",
-                Postal_Code:"",
-                Mob_No:"",})
-            showFormHandler(false);
-            }}>{isUpdate?"Update":"Save"}</button>
+          <button className="btn-save" onClick={()=>addressHandler(address)}>{isUpdate?"Update":"Save"}</button>
           <button className="btn-cancel" onClick={()=>showFormHandler(false)}>Cancel</button>
         </div>
       </div>
