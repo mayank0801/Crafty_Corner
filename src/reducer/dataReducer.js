@@ -1,7 +1,7 @@
 export const initialState={
     filters:{
-        sort:"",
-        rating:0,
+        sortType:"",
+        rating:1,
         categorySelected:[],
         price:9000,
         searchValue:""
@@ -56,13 +56,16 @@ export const reducer=(state,action)=>{
         case "CLEAR_WISHLIST":
             return {...state,wishlist:[]};
         case "FILTER_CHANGE":
-            console.log(action.payLoad,"Filter Changed")
+            // console.log(action.payLoad,"Filter Changed")
             if(action.payLoad.FilterType==="categorySelected"){
                 const isselectedAlready=state.filters.categorySelected.includes(action.payLoad.value);
                 if(!isselectedAlready)return {...state,filters:{...state.filters,[action.payLoad.FilterType]:[...state.filters.categorySelected,action.payLoad.value]}}
                 else return {...state,filters:{...state.filters,[action.payLoad.FilterType]:state.filters.categorySelected.filter(cat=>cat!==action.payLoad.value)}}
             }
             // console.log(action.payLoad.value,"selected price")
+            // console.log(action.payLoad.value,"sortType")
+            console.log({...state,filters:{...state.filters,[action.payLoad.FilterType]:action.payLoad.value}}
+                ,"change");
             return {...state,filters:{...state.filters,[action.payLoad.FilterType]:action.payLoad.value}}
         case "ADD_NEW_ADDRESS":
             return {...state,address:[...state.address,action.payLoad]}
@@ -85,7 +88,8 @@ export const reducer=(state,action)=>{
                 sort:"",
                 rating:0,
                 categorySelected:[],
-                price:9000
+                price:9000,
+                searchValue:""
             }}
         case "UPDATE_ADDRESS":
             return {...state,address:state.address.map((add)=>add._id===action.payLoad._id?action.payLoad:add)};

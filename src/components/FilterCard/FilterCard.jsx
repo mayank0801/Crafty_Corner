@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./FilterCard.css";
 import { DataContext } from "../../context/dataContext/dataContext";
 import {IoMdClose} from "react-icons/io"
 import {AiFillStar} from "react-icons/ai"
 export default function FilterCard({setshowFilter,isshowFilter}) {
-  console.log(setshowFilter,"props")
+  // console.log(setshowFilter,"props")
   const {state,dispatch}=useContext(DataContext)
   const sortType = ["High To Low", "Low To High"];
   const rating = [5, 4, 3, 2, 1];
     const MIN_VALUE=0;
     const MAX_VALUE=20000;
 
+
+    // console.log(state.filters.sortType,"SortType Value");
   return (
     <div className="filter-container">
       <div className="filter-heading borderBottom">
@@ -47,21 +49,26 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
         </div>
         <div className="filter-input">
           {sortType.map((sortTitle) => {
+              console.log(state.filters.sortType===sortTitle,"condition")
+              console.log(state.filters.sortType,"SortType")
+              console.log(sortTitle,"SortTitle");
             return (
-              <lable key={sortTitle} className="input-filter">
+              <>
+              <label key={sortTitle} className="input-filter">
+                 </label>
                 <input type="radio" 
-                    name="sort"
-                    value={sortTitle}
-                    checked={state.filters.sort===sortTitle}
-                    onClick={(e)=>dispatch({
+                    checked={state.filters.sortType.includes(sortTitle)}
+                    onChange={(e)=>{
+                      console.log(e.target.value,"etarget")
+                      dispatch({
                     type:"FILTER_CHANGE",
                     payLoad:{
-                        FilterType:"sort",
+                        FilterType:"sortType",
                         value:sortTitle
                     }
-                })}/>
+                })}}/>
                 <span>{sortTitle}</span>
-              </lable>
+                </>
             );
           })}
         </div>
