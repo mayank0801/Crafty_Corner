@@ -17,11 +17,15 @@ import { Checkout } from "./Pages/CheckOut/Checkout";
 import { Order } from "./Pages/OrderSummary/Order";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from "react";
+import { DataContext } from "./context/dataContext/dataContext";
+import { Loader } from "./components/Loader/Loader";
 
 function App() {
+  const {isLoading}=useContext(DataContext);
   return (
     <div className="App">
-   
+      {isLoading&&<Loader />}
         <div className="navcontainer" style={{backgroundColor:"#f1eded"}}>
           <NavBar />
         </div>

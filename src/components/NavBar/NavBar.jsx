@@ -6,21 +6,25 @@ import { FaSearch} from "react-icons/fa";
 import { Navigate, useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom"
 import image from "../../assets/craft-corner-logo.png"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../context/dataContext/dataContext";
 
 export default function NavBar() {
 
   const [searchText,setSearchText]=useState("");
-  const {state:{filters},dispatch}=useContext(DataContext);
+  const {state:{filters},dispatch,setLoading}=useContext(DataContext);
   const navigate=useNavigate();
 
-
   useEffect(()=>{
-    dispatch({type:"FILTER_CHANGE",payLoad:{FilterType:"searchValue",value:searchText.trim()}})
+     setTimeout(()=>{
+      dispatch({type:"FILTER_CHANGE",payLoad:{FilterType:"searchValue",value:searchText.trim()}})
     if(searchText.trim().length>0){
       navigate("/store")
     }
+    setLoading(true);
+    setTimeout(()=>setLoading(false),500)
+    },500)
+    
    
   },[searchText])
   return (

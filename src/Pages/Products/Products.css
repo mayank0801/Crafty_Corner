@@ -28,7 +28,7 @@
     position: absolute;
     height: 100%;
     min-width: 35%;
-    z-index: 99999999999999999999999;
+    z-index: 999;
     top: 0%;
     right: 0;
     background-color: #F1EDED;

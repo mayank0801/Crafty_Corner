@@ -10,6 +10,7 @@ export default function DataProvider({children}){
     const [state,dispatch]=useReducer(reducer,initialState);
 
     const {token}=useContext(AuthContext);
+    const [isLoading,setLoading]=useState(false);
 
     // console.log(token,"After Hard Refresh");
 
@@ -19,12 +20,12 @@ export default function DataProvider({children}){
         try{
         const {data:{categories}}=await axios.get("/api/categories")
         // console.log(categories,"responsecategory");
+        setLoading(true);
         dispatch({type:"INTIALIZE_CATEGORY",payLoad:categories})
         
         const {data:{products}}=await axios.get("/api/products")
         // console.log(products,"resProduct");
         dispatch({type:"INTIALIZE_PRODUCT",payLoad:products})
-
         if(token){
             const cartResponse=await axios.get("/api/user/cart",{
                 headers:{authorization:token}
@@ -42,6 +43,8 @@ export default function DataProvider({children}){
             if(wishListResponse.status===200||wishListResponse.status===201){
                 dispatch({type:"INTIALIZE_WISHLIT",payLoad:wishListResponse.data.wishlist})
             }
+            setLoading(false);
+
         }
         }
         catch(e){
@@ -53,7 +56,7 @@ export default function DataProvider({children}){
         getData();
     },[])
     return(
-        <DataContext.Provider value={{x:44,state,dispatch}}>
+        <DataContext.Provider value={{state,dispatch,isLoading,setLoading}}>
             {children}
         </DataContext.Provider>
     )
