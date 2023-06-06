@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FilterCard from "../../components/FilterCard/FilterCard";
 import { DataContext } from "../../context/dataContext/dataContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -8,36 +8,24 @@ import filterData from "../../utils/filterFunction";
 import { ToastContainer } from "react-toastify";
 
 export default function Products(){
-    const {state}=useContext(DataContext);
+    const {state,setLoading}=useContext(DataContext);
     const [isshowFilter,setshowFilter]=useState(false);
-    // console.log(state.products,"state products")
 
     let dataToDisplay=filterData(state);
-    // console.log(dataToDisplay)
-    // console.log(isshowFilter)
     const clikHandler=()=>{
-        console.log("Clicked")
         setshowFilter((isshowFilter)=>!isshowFilter)
-        console.log(isshowFilter)
     }
+
+    useEffect(()=>{
+        setLoading(true)
+        setTimeout(()=>{
+            setLoading(false)
+        },1000)
+    },[])
 
     return(
    
         <div className="productt">
-
-           {/* <button onClick={()=>clikHandler()}>
-            <IoFilter className="filtericon"  size={30} />
-            </button>
-
-
-
-
-            <div  className={isshowFilter?"mobile-nav showModal":"mobile-nav"}>
-                <FilterCard helper={setshowFilter}/>
-            </div> */}
-
-       
-            
             <div  className="filter-containerr">
                 <FilterCard />
             </div>

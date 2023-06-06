@@ -1,12 +1,12 @@
 import { v4 as uuid } from "uuid";
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./UserInfo.css";
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import NewAddressCard from '../../components/NewAddress/NewAddress';
 import { DataContext } from "../../context/dataContext/dataContext";
 export const UserInfo = () => {
 const {user,logoutHandler}=useContext(AuthContext);
-const {state:{address},dispatch}=useContext(DataContext)
+const {state:{address},dispatch,setLoading}=useContext(DataContext)
 const [isProfile,setIsProfile]=useState(true);
 const [isShowAddressForm,setShowAddressForm]=useState(false);
 const [isUpdate,setUpdate]=useState(false);
@@ -23,15 +23,17 @@ const [formaddress,setAddress]=useState({
 });
 
 
-// Wrong way
-// const AddAddressDispatch=dispatch({type:"ADD_NEW_ADDRESS",payLoad:formaddress})
-// const UpdateAddressDispatch=dispatch({type:"UPDATE_ADDRESS",payLoad:formaddress})
+
+
+useEffect(()=>{
+  setLoading(true)
+  setTimeout(()=>setLoading(false),1000)
+},[])
 
 
 
   const UserDetail=()=>{
     const {email,firstName,lastName}=user;
-    // console.log(email,firstName,lastName);
     return(
     <div className='user-profile'>
       <h2>Profile Detail</h2>
@@ -73,7 +75,7 @@ const [formaddress,setAddress]=useState({
                       setShowAddressForm(true)
                       setAddress(add)
                       setUpdate(true)
-                    // setCurrentDispatch(UpdateAddressDispatch);
+                   
                     }}>Edit</button>
                     <button onClick={()=>dispatch({type:"REMOVE_ADDRESS",payLoad:add._id})}>Remove</button>
                  </div>
@@ -84,7 +86,7 @@ const [formaddress,setAddress]=useState({
                   <button className='btn-Add' onClick={()=>{
                     setShowAddressForm(true)
                     setUpdate(false);
-                    // setCurrentDispatch(AddAddressDispatch)
+                   
                     }}>+ Add New Address</button>
 
                 </div>

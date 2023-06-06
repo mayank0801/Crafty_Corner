@@ -9,7 +9,6 @@ import banner from "../../assets/Banner.png"
 
 export default function Home(){
     const {state,dispatch}=useContext(DataContext);
-    console.log(state.categories,"categories");
 
 
     useEffect(()=>{

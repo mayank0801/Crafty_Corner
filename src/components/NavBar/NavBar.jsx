@@ -54,7 +54,7 @@ export default function NavBar() {
         <span className="count">{state.cart.length}</span>
         </div>
         </Link>
-        <Link to="/login" className="navigate-link">
+        <Link to="/userProfile" className="navigate-link">
         <CgProfile size={30} />
         </Link>
       </div>

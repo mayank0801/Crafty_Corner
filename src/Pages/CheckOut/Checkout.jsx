@@ -10,8 +10,6 @@ export const Checkout = () => {
     const {token}=useContext(AuthContext);
     const [orderAddress,setOrderAddress]=useState(address[0]);
     const Bill=TotalcartPrice(cart);
-    console.log(address);
-    // console.log()
     const navigate=useNavigate();
 
     const checkoutHandler=async()=>{

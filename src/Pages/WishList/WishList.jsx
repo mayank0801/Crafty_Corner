@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../../context/dataContext/dataContext'
 import "./WishList.css"
 import WishListCard from '../../components/WishListCard/WishList';
 export const WishList = () => {
-  const {state:{wishlist}}=useContext(DataContext);
+  const {state:{wishlist},setLoading}=useContext(DataContext);
   console.log(wishlist)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>setLoading(false),1000)
+  },[])
   
   return (
     <>

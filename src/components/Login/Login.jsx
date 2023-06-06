@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdNavigateNext } from "react-icons/md";
 import "./Login.css";
 import { useContext, useState } from "react";
@@ -10,26 +10,26 @@ import { toast } from "react-toastify";
 
 export default function Login() {
 
+
     const {loginHandler,setToken,setUser}=useContext(AuthContext);
     const {dispatch}=useContext(DataContext);
     const [email,setEmail]=useState("");
     const [password,setpassword]=useState("");
-    console.log(email);
-    console.log(password);
     const navigate=useNavigate();
+    const location=useLocation();
+
     const [showPassword,setShowPassword]=useState(false);
     const login=async(email,password)=>{
       try {
         const response=await loginHandler(email,password);
-        console.log(response);
         if(response.status===200||response.status===201){
-          navigate("/store")
           setToken(response.data.encodedToken);
           setUser(response.data.foundUser);
           dispatch({type:"INTIALIZE_CART",payLoad:response.data.foundUser.cart})
           dispatch({type:"INITALIZE_WISHLIST",payLoad:response.data.foundUser.wishlist});
           toast.success("Sign In SucessFull");
           localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
+          navigate(location.state.from)
         }
         
       } catch (error) {

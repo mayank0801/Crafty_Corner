@@ -9,10 +9,8 @@ export default function UserProfile() {
   return (
     <section className='user-container'>
         <main className='content-user'>
-        {!token&&<Login/>}
-        {token&&<Navigate to="/userProfile" replace={true}/>}
+        <Login/>
         </main>
-        {/* <Footer/> */}
     </section>
   )
 }

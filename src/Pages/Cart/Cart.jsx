@@ -1,17 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../../context/dataContext/dataContext'
 import "./Cart.css"
 import CartCard from '../../components/CartCard/CartCard';
 import { TotalcartPrice } from '../../utils/utlis';
 import { useNavigate } from 'react-router';
 export const Cart = () => {
-  const {state:{cart}}=useContext(DataContext);
+  const {state:{cart},setLoading}=useContext(DataContext);
 
   const Bill=TotalcartPrice(cart)
   const navigate=useNavigate();
 
   // {cart.length===0&&<div className='container-center'><h1 className='title'> Your Cart Is Empty ! ☹️</h1></div>}
-  
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>setLoading(false),1000)
+  },[])
 
  return(
   

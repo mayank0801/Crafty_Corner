@@ -1,16 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router";
-import { WishList } from "../../Pages/WishList/WishList";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 export const AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
   const localStorageToken=JSON.parse(localStorage.getItem('user'));
-  // console.log(localStorageToken);
   const [token,setToken]=useState(localStorageToken?.token);
   const [user,setUser]=useState(localStorageToken?.userInfo);
-  // console.log(token,user);
+
 
 
   useEffect(()=>{
@@ -23,7 +21,6 @@ export default function AuthContextProvider({children}){
 
     const loginHandler = async (email,password) => {
         try {
-            // console.log("Inside login Try")
           const response = await axios.post(`/api/auth/login`, {
             email,password
           });
@@ -35,7 +32,6 @@ export default function AuthContextProvider({children}){
 
 
       const signupHandler = async (userInfo) => {
-        // console.log("Signup Hnadler with",user)
         try {
           const response = await axios.post(`/api/auth/signup`, {
            ...userInfo
@@ -47,7 +43,6 @@ export default function AuthContextProvider({children}){
             setUser(response.data.foundUser)
             localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
             toast.success("SignUp SucessFull");
-            navigate("/store")
           
           }
         } catch (error) {
@@ -56,11 +51,11 @@ export default function AuthContextProvider({children}){
       };
 
 
-      // userfound->cart->WishListencoded
+
 
 
       const logoutHandler=()=>{
-        console.log("logout started");
+
         localStorage.removeItem('user');
         setToken(false)
         setUser(false)

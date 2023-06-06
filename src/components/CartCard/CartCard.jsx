@@ -18,7 +18,6 @@ export default function CartCard({
         categoryName,qty,id}=product
     const {token}=useContext(AuthContext);
     const {state:{wishlist},dispatch}=useContext(DataContext)
-    // console.log(productName,"Inside Cart",token);
 
     const wishlistHandler=(product,token,dispatch)=>{
         addToWishList(product,token,dispatch);

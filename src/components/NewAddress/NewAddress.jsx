@@ -7,10 +7,7 @@ import { toast } from "react-toastify";
 import { TOAST_PARAMS } from "../../utils/utlis";
 
 export default function NewAddressCard({showFormHandler,setAddress,address,isUpdate}) {
-  console.log(isUpdate);
-    // const [isShowAddressForm,setShowAddressForm]=useState(false);
     const {state,dispatch}=useContext(DataContext);
-    const navigate =useNavigate();
 
     const formHandler=(e)=>{
         const {name,value}=e.target;

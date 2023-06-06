@@ -49,15 +49,13 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
         </div>
         <div className="filter-input">
           {sortType.map((sortTitle) => {
-              console.log(state.filters.sortType===sortTitle,"condition")
-              console.log(state.filters.sortType,"SortType")
-              console.log(sortTitle,"SortTitle");
             return (
               <>
               <label key={sortTitle} className="input-filter">
                  </label>
                 <input type="radio" 
-                    checked={state.filters.sortType.includes(sortTitle)}
+                
+                    checked={state.filters.sortType===sortTitle}
                     onChange={(e)=>{
                       console.log(e.target.value,"etarget")
                       dispatch({

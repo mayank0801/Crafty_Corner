@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from "react";
 import { DataContext } from "./context/dataContext/dataContext";
 import { Loader } from "./components/Loader/Loader";
+import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 
 function App() {
   const {isLoading}=useContext(DataContext);
@@ -36,10 +37,10 @@ function App() {
             <Route path="/store" element={<Products/>}/>
             <Route path="/login" element={<UserProfile/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="/userProfile" element={<UserInfo/>}/>
+            <Route path="/cart" element={<RequireAuth><Cart/></RequireAuth>}/>
+            <Route path="/userProfile" element={<RequireAuth><UserInfo/></RequireAuth>}/>
             <Route path="/mockman" element={<Mockman/>}/>
-            <Route path="/wishlist" element={<WishList/>}/>
+            <Route path="/wishlist" element={<RequireAuth><WishList/></RequireAuth>}/>
             <Route path="/store/:productId" element={<ProductDetail/>}/>
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/order" element={<Order/>}/>
