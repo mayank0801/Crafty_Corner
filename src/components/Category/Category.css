@@ -1,5 +1,5 @@
 .category-container {
-
+    max-width: 80%;
     margin: 0.5rem auto;
     display: flex;
     flex-wrap: wrap;
@@ -11,7 +11,7 @@
   .category-cardContainer {
 
     display: inline-block;
-    cursor: s;
+    margin-left: 1rem;
     padding-right: 0.8rem;
     margin-bottom: 0.7rem;
     margin-left:2rem ;
