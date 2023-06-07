@@ -10,7 +10,7 @@ export default function Category() {
 const navigate=useNavigate();
   const CategoryCard = ({ _id, categoryName, url }) => {
     return (
-      <div className="category-cardContainer" onClick={()=>{
+      <div className="category-cardContaine cursor" onClick={()=>{
         dispatch({
         type:"FILTER_CHANGE",
         payLoad:{
