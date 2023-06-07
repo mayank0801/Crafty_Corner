@@ -1,6 +1,6 @@
 import "./App.css";
 // import logo from "./logo.png";
-import {Routes,Route} from "react-router-dom";
+import {Routes,Route, useLocation} from "react-router-dom";
 import Products from "./Pages/Products/Products";
 import Home from "./Pages/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
@@ -17,13 +17,17 @@ import { Checkout } from "./Pages/CheckOut/Checkout";
 import { Order } from "./Pages/OrderSummary/Order";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext } from "./context/dataContext/dataContext";
 import { Loader } from "./components/Loader/Loader";
 import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 
 function App() {
   const {isLoading}=useContext(DataContext);
+  const {pathname}=useLocation();
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[pathname])
   return (
     <div className="App">
       {isLoading&&<Loader />}

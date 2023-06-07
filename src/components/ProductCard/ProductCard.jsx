@@ -6,7 +6,8 @@ import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { addToWishList, removeFromWishList } from "../../Services/wishListServices";
 import { useLocation, useNavigate } from "react-router";
-import { DiscountPercent, isInCart, isInWishList } from "../../utils/utlis";
+import { DiscountPercent, TOAST_PARAMS, isInCart, isInWishList } from "../../utils/utlis";
+import { toast } from "react-toastify";
 export default function ProductCard({product}) {
   const {token}=useContext(AuthContext);
   const {state:{wishlist,cart},dispatch}=useContext(DataContext);
@@ -32,6 +33,7 @@ export default function ProductCard({product}) {
       isPresentCart?navigate("/cart"):addtoCartHandler(product,token,dispatch);
       }
       else{
+        toast.info("Login To Continue",TOAST_PARAMS)
         navigate("/login", { state: { from: location?.pathname } });
       }
     }
@@ -40,6 +42,7 @@ export default function ProductCard({product}) {
         addToWishList(product,token,dispatch)
       }
       else{
+        toast.info("Login To Continue",TOAST_PARAMS)
         navigate("/login", { state: { from: location?.pathname } });
       }
     }

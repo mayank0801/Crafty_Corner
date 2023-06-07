@@ -11,6 +11,7 @@ export const TotalcartPrice=(cart)=>{
 export const DiscountPercent=(originalPrice,currentPrice)=>{
     return Math.trunc(((originalPrice-currentPrice)*100)/originalPrice)
 }
+
 export const TOAST_PARAMS = {
     position: "bottom-right",
     autoClose: 5000,

@@ -11,7 +11,7 @@
   .category-cardContainer {
 
     display: inline-block;
-
+    cursor: s;
     padding-right: 0.8rem;
     margin-bottom: 0.7rem;
     margin-left:2rem ;

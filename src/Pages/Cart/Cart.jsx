@@ -35,7 +35,7 @@ export const Cart = () => {
 
       <div className='cart-price'>
         <div className='cart-content'>
-        <h1 className='title border-bottom'>Price Deatil</h1>
+        <h1 className='title border-bottom'>Price Detail</h1>
         <div className='flex-spacebetween'>
           <p className='title-bold'>Price({cart.length})</p>
           <span className='bold'>₹{Bill.originalPrice}</span>

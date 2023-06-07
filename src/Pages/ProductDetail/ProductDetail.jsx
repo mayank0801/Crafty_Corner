@@ -3,11 +3,12 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import { getProduct } from '../../Services/productServices';
 import {MdStarRate} from "react-icons/md";
 import "./ProductDetail.css";
-import { isInCart, isInWishList } from '../../utils/utlis';
+import { TOAST_PARAMS, isInCart, isInWishList } from '../../utils/utlis';
 import { DataContext } from '../../context/dataContext/dataContext';
 import { addtoCartHandler } from '../../Services/cartServices';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { addToWishList } from '../../Services/wishListServices';
+import { toast } from 'react-toastify';
 
 
 export const ProductDetail = () => {
@@ -24,7 +25,9 @@ export const ProductDetail = () => {
       if(token){
         isInCart(product._id,cart)?navigate(`/cart`):addtoCartHandler(product,token,dispatch);}
         else{
-          navigate("/login", { state: { from: location?.pathname } });
+        toast.info("Login To Continue",TOAST_PARAMS)
+
+      navigate("/login", { state: { from: location?.pathname } });
         }
       }
 
@@ -34,6 +37,8 @@ export const ProductDetail = () => {
         isInWishList(product._id,wishlist)?navigate("/wishlist"):addToWishList(product,token,dispatch);
         }
         else{
+        toast.info("Login To Continue",TOAST_PARAMS)
+
           navigate("/login", { state: { from: location?.pathname } });
         }
       }

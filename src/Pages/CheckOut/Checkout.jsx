@@ -59,7 +59,7 @@ export const Checkout = () => {
 
             
               <div className>
-                <h3 className=' textAlignCenter border-line'>Price Deatil</h3>
+                <h3 className=' textAlignCenter border-line'>Price Detail</h3>
                 <div className='flex-spacebetween margin-zero'>
                   <p className=''>Price({cart.length})</p>
                   <span className=''>₹{Bill.originalPrice}</span>

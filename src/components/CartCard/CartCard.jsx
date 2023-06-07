@@ -31,15 +31,15 @@ export default function CartCard({
     
     <div className="card-conatiner">
       <div className="card-detail">
-        <img src={imageUrl} alt="pro" />
+        <img  className="cursor" src={imageUrl} alt="pro" onClick={()=>navigate(`/store/${_id}`)}/>
         <div className="product-detail">
           <p className="title-card">{productName}</p>
           <h2 className="currentPrice">₹{currentPrice}</h2>
           <del className="originalPrice">₹{originalPrice}</del>
           <p>
-            Quantity: <button className="btn-rounded" disabled={qty===1} onClick={()=>updateQuantity(_id,"decrement",token,dispatch)}>-</button>
+            Quantity: <button className="btn-rounded cursor" disabled={qty===1} onClick={()=>updateQuantity(_id,"decrement",token,dispatch)}>-</button>
             {qty}
-            <button className="btn-rounded" onClick={()=>updateQuantity(_id,"increment",token,dispatch)}>+</button>
+            <button className="btn-rounded cursor" onClick={()=>updateQuantity(_id,"increment",token,dispatch)}>+</button>
           </p>
           <div className="btn-actionCard">
             <button className="btn-action" onClick={()=>removeFromCart(_id,token,dispatch)}>Remove</button>
