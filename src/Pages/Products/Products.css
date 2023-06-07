@@ -6,12 +6,16 @@
 }
 .filter-containerr{  
     width: 21%;
+    position: fixed;
+    /* left: ; */
     border-right: 1px solid black;
     align-self: flex-start;
     height: 100vh;
 }
 
 .productList-container{
+    position: relative;
+    left: 21%;
     margin-top: 1rem;
     width: 78%;
 }

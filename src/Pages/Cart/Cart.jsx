@@ -58,7 +58,7 @@ export const Cart = () => {
         <p>You Will Save {Bill.originalPrice-Bill.Price} rs</p>
         </div>
         </div>
-          <button className='btn-deafult' onClick={()=>navigate("/checkout")}>CheckOut</button>
+          <button className='btn-deafult cursor' onClick={()=>navigate("/checkout")}>CheckOut</button>
       </div>
     </div>
     </div>

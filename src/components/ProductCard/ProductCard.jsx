@@ -52,13 +52,13 @@ export default function ProductCard({product}) {
         <button className="wishlist-btn">
           {
           isPresentWishlist?
-          <AiFillHeart className="wishlist-icon" size={25} color="red" onClick={()=>removeFromWishList(_id,token,dispatch)}/>:
-          <AiOutlineHeart className="wishlist-icon" size={25} onClick={()=>wishListHandler(product,token,dispatch)}/>
+          <AiFillHeart className="wishlist-icon cursor" size={25} color="red" onClick={()=>removeFromWishList(_id,token,dispatch)}/>:
+          <AiOutlineHeart className="wishlist-icon cursor" size={25} onClick={()=>wishListHandler(product,token,dispatch)}/>
           
           }
           </button>
         <div className="product-image-detail">
-          <img className="product-image" src={imageUrl} alt="productImage"  onClick={()=>navigate(`/store/${_id}`)}/>
+          <img className="product-image cursor" src={imageUrl} alt="productImage"  onClick={()=>navigate(`/store/${_id}`)}/>
         </div>
         <div className="product-details">
           <p className="product-title">{productName}</p>
@@ -80,7 +80,7 @@ export default function ProductCard({product}) {
           </div>
         </div>
         <div className="cart-buttonHandler">
-        <button className="btn-add" onClick={()=>cartHAndler(product,token,dispatch)}>{isPresentCart?"Go To Cart":"Add To Cart"}</button>
+        <button className="btn-add cursor" onClick={()=>cartHAndler(product,token,dispatch)}>{isPresentCart?"Go To Cart":"Add To Cart"}</button>
         </div>
       </div>
     );

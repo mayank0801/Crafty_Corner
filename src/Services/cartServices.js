@@ -50,7 +50,7 @@ export const updateQuantity=async(productId,type,token,dispatch)=>{
           }
         })
         dispatch({type:"UPDATE_CART",payLoad:response.data.cart})
-        toast.success("Added one more Quantity",TOAST_PARAMS);
+        type==="increment"?toast.success("Added one more Quantity",TOAST_PARAMS):toast.success("Removed one Quantity",TOAST_PARAMS)
     } catch (error) {
         console.error(error)
     }

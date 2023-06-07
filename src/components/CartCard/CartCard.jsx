@@ -42,8 +42,8 @@ export default function CartCard({
             <button className="btn-rounded cursor" onClick={()=>updateQuantity(_id,"increment",token,dispatch)}>+</button>
           </p>
           <div className="btn-actionCard">
-            <button className="btn-action" onClick={()=>removeFromCart(_id,token,dispatch)}>Remove</button>
-            <button className="btn-action" onClick={
+            <button className="btn-action cursor" onClick={()=>removeFromCart(_id,token,dispatch)}>Remove</button>
+            <button className="btn-action cursor" onClick={
                 ()=>{
                     isInWishList(_id,wishlist)?
                     navigate("/wishlist"):wishlistHandler(product,token,dispatch)
