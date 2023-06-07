@@ -56,7 +56,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
                 
                     checked={state.filters.sortType===sortTitle}
                     onChange={(e)=>{
-                      console.log(e.target.value,"etarget")
+                    
                       dispatch({
                     type:"FILTER_CHANGE",
                     payLoad:{

@@ -12,25 +12,21 @@ export default function DataProvider({children}){
     const {token}=useContext(AuthContext);
     const [isLoading,setLoading]=useState(false);
 
-    // console.log(token,"After Hard Refresh");
-
 
 
     const getData=async ()=>{
         try{
         const {data:{categories}}=await axios.get("/api/categories")
-        // console.log(categories,"responsecategory");
         setLoading(true);
         dispatch({type:"INTIALIZE_CATEGORY",payLoad:categories})
         
         const {data:{products}}=await axios.get("/api/products")
-        // console.log(products,"resProduct");
         dispatch({type:"INTIALIZE_PRODUCT",payLoad:products})
         if(token){
             const cartResponse=await axios.get("/api/user/cart",{
                 headers:{authorization:token}
             })
-            console.log(cartResponse,"cartresponse");
+      
             if(cartResponse.status===200||cartResponse.status===201){
                 dispatch({type:"INTIALIZE_CART",payLoad:cartResponse.data.cart})
             }
@@ -39,7 +35,7 @@ export default function DataProvider({children}){
             const wishListResponse=await axios.get("/api/user/cart",{
                 headers:{authorization:token}
             })
-            console.log(wishListResponse,"wishListResponse");
+           
             if(wishListResponse.status===200||wishListResponse.status===201){
                 dispatch({type:"INTIALIZE_WISHLIT",payLoad:wishListResponse.data.wishlist})
             }
@@ -48,10 +44,9 @@ export default function DataProvider({children}){
         }
         }
         catch(e){
-            console.log(e);
+           
         }
     }
-    // useEffect(()=>{},[])
     useEffect(()=>{
         getData();
     },[])

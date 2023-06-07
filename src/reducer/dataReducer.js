@@ -49,7 +49,6 @@ export const reducer=(state,action)=>{
         case "ADD_TO_CART":
             return {...state,cart:[...action.payLoad]};
         case "REMOVE_FROM_CART":
-            console.log("inside reducer")
             return {...state,cart:[...action.payLoad]};
         case "UPDATE_CART":
             return {...state,cart:[...action.payLoad]};
