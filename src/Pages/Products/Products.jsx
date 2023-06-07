@@ -31,7 +31,8 @@ export default function Products(){
             </div>
         <div className="productList-container">
             <div className="flexSpaceBetween">
-            <h3 className=" ">Showing All Product ({dataToDisplay.length})</h3>
+            {dataToDisplay.length&&<h3 className=" ">Showing All Product ({dataToDisplay.length})</h3>}
+            {dataToDisplay.length===0&&<h1 className="title">No product Found Of Applied Filter</h1>}
             <button onClick={()=>clikHandler()}>
             <IoFilter className="filtericon"  size={30} />
             </button>

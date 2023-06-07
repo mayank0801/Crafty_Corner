@@ -9,18 +9,11 @@
     box-sizing: border-box;
     font-family: "Rubik",sans-serif;
 }
-/* footer{
-    text-align: center;
-} */
-
-/* .App{
-    position: relative;
-} */
 
 .text-center{
     text-align: center;
     margin-top: 2rem;
-    /* margin-bottom: 1rem; */
+
 }
 
 .displayFlexx{
@@ -37,11 +30,10 @@
     z-index: 10;
 }
 .main-content{
-    margin:3.5rem 0;
-    /* padding-top: 5rem; */
+    margin:3rem 0;
+
 }
 .toast-container {
-    /* margin-top: 15rem; */
   }
 .loader {
     position: absolute;
@@ -54,6 +46,9 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999999; 
+  }
+  .cursor{
+    cursor: pointer;
   }
 
 @media (width<=800px) {

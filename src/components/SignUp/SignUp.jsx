@@ -17,11 +17,12 @@ export default function SignUp() {
         const value=e.target.value
         setUserInfo({...userInfo,[name]:value})
     }
+    
     const accountHandler=()=>{
-        signupHandler();
+        signupHandler(userInfo);
         setUserInfo({...userInfo,firstName:"",lastName:"",email:"",password:""})
     }
-    console.log(userInfo,"formHandler")
+
   return (
     <section className="auth-container">
       <div className="auth-main-container">
@@ -32,28 +33,28 @@ export default function SignUp() {
           <div className="user-info">
             <div className="user-name">
               <label>First Name: </label>
-              <input type="text" name="firstName" value={userInfo.firstName} placeholder="Test" onChange={(e)=>formHandler(e)}/>
+              <input type="text" name="firstName" value={userInfo.firstName} placeholder="Test" onChange={(e)=>formHandler(e)} required/>
             </div>
             <div className="user-name">
               <label>Last Name: </label>
-              <input type="text" name="lastName" value={userInfo.lastName} placeholder="Test" onChange={(e)=>formHandler(e)}/>
+              <input type="text" name="lastName" value={userInfo.lastName} placeholder="Test" onChange={(e)=>formHandler(e)} required/>
             </div>
           </div>
           <div className="input-container">
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" value={userInfo.email} placeholder="test@gmail.com" onChange={(e)=>formHandler(e)} />
+            <input type="email" name="email" value={userInfo.email} placeholder="test@gmail.com" onChange={(e)=>formHandler(e)} required/>
           </div>
           <div className="input-container">
             <label htmlFor="password">Password:</label>
             <span className="password-container">
-            <input type={showPassword?"text":"password"} name="password" value={userInfo.password} placeholder="*****" onChange={(e)=>formHandler(e)}/>
+            <input type={showPassword?"text":"password"} name="password" value={userInfo.password} placeholder="*****" onChange={(e)=>formHandler(e)} required/>
             {showPassword?<AiFillEye onClick={()=>setShowPassword(false)}/>:<AiFillEyeInvisible onClick={()=>setShowPassword(true)}/>}
             </span>
           </div>
         </main>
         <footer>
           <div className="btn-primary">
-            <span onClick={()=>accountHandler()}>Create New Account </span>
+            <span className="cursor" onClick={()=>accountHandler()}>Create New Account </span>
           </div>
           <div className="auth-navigater">
             <Link className="link-primary" to="/login">

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import { addToWishList, removeFromWishList } from "../../Services/wishListServices";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { DiscountPercent, isInCart, isInWishList } from "../../utils/utlis";
 export default function ProductCard({product}) {
   const {token}=useContext(AuthContext);
@@ -21,14 +21,27 @@ export default function ProductCard({product}) {
       ratingCount,
       review
     } = product;
+    const location=useLocation();
     const isPresentWishlist=isInWishList(_id,wishlist);
     const isPresentCart=isInCart(_id,cart);
 
     const navigate=useNavigate();
 
     const cartHAndler=(product,token,dispatch)=>{
+      if(token){
       isPresentCart?navigate("/cart"):addtoCartHandler(product,token,dispatch);
-        // removeFromWishList(product._id,token,dispatch);
+      }
+      else{
+        navigate("/login", { state: { from: location?.pathname } });
+      }
+    }
+    const wishListHandler=(product,token,dispatch)=>{
+      if(token){
+        addToWishList(product,token,dispatch)
+      }
+      else{
+        navigate("/login", { state: { from: location?.pathname } });
+      }
     }
 
     return (
@@ -37,7 +50,7 @@ export default function ProductCard({product}) {
           {
           isPresentWishlist?
           <AiFillHeart className="wishlist-icon" size={25} color="red" onClick={()=>removeFromWishList(_id,token,dispatch)}/>:
-          <AiOutlineHeart className="wishlist-icon" size={25} onClick={()=>addToWishList(product,token,dispatch)}/>
+          <AiOutlineHeart className="wishlist-icon" size={25} onClick={()=>wishListHandler(product,token,dispatch)}/>
           
           }
           </button>
@@ -63,7 +76,9 @@ export default function ProductCard({product}) {
             <span className="price">{DiscountPercent(originalPrice,currentPrice)}%Off</span>
           </div>
         </div>
+        <div className="cart-buttonHandler">
         <button className="btn-add" onClick={()=>cartHAndler(product,token,dispatch)}>{isPresentCart?"Go To Cart":"Add To Cart"}</button>
+        </div>
       </div>
     );
   }

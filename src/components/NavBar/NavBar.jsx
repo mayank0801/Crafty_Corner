@@ -44,14 +44,14 @@ export default function NavBar() {
         <Link className="navigate-link product" to="/store">Products</Link>
         <Link className="navigate-link" to="/wishlist">
           <div className="wishlist">
-        <AiOutlineHeart size={30} />
-          <span className="count">{state.wishlist.length}</span>
+            <AiOutlineHeart size={30} />
+          <span className={state.wishlist.length?"count":"displayNone"}>{state.wishlist.length}</span>
         </div>
         </Link>
         <Link className="navigate-link" to="/cart">
           <div className="cart">
         <AiOutlineShoppingCart size={30}  />
-        <span className="count">{state.cart.length}</span>
+        <span className={state.cart.length?"count":"displayNone"}>{state.cart.length}</span>
         </div>
         </Link>
         <Link to="/userProfile" className="navigate-link">

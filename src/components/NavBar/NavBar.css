@@ -75,6 +75,9 @@ a:hover{
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
+.displayNone{
+  display: none;
+}
 
 
   @media (width<800px) {

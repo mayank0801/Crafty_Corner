@@ -20,14 +20,12 @@ export default function AuthContextProvider({children}){
     const navigate=useNavigate();
 
     const loginHandler = async (email,password) => {
-        try {
+    
           const response = await axios.post(`/api/auth/login`, {
             email,password
           });
           return response;
-        } catch (error) {
-          console.log(error);
-        }
+       
       };
 
 
@@ -36,14 +34,11 @@ export default function AuthContextProvider({children}){
           const response = await axios.post(`/api/auth/signup`, {
            ...userInfo
           });
-          console.log(response);
+          
           if(response.status===201||response.status===200)
           {
-            setToken(response.data.encodedToken);
-            setUser(response.data.foundUser)
-            localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
             toast.success("SignUp SucessFull");
-          
+            navigate("/login")
           }
         } catch (error) {
           console.log(error);
@@ -60,7 +55,7 @@ export default function AuthContextProvider({children}){
         setToken(false)
         setUser(false)
         toast.success("Logout Sucessfully")
-        navigate('/login');
+        navigate('/store');
       }
 
 

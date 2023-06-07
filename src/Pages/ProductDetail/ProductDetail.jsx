@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import { getProduct } from '../../Services/productServices';
 import {MdStarRate} from "react-icons/md";
 import "./ProductDetail.css";
@@ -13,35 +13,39 @@ import { addToWishList } from '../../Services/wishListServices';
 export const ProductDetail = () => {
 
     const {productId}=useParams();
-    console.log(productId,"productId");
-    const {state:{cart,wishlist},dispatch}=useContext(DataContext);
+    const {state:{cart,wishlist},dispatch,setLoading,isLoading}=useContext(DataContext);
     const {token}=useContext(AuthContext);
 
-    const [isLoading,setLoading]=useState(true);
     const [product,setProduct]=useState();
 
     const navigate=useNavigate();
+    const location=useLocation();
     const cartHAndler=(product,token,dispatch)=>{
-        isInCart(product._id,cart)?navigate(`/cart`):addtoCartHandler(product,token,dispatch);
+      if(token){
+        isInCart(product._id,cart)?navigate(`/cart`):addtoCartHandler(product,token,dispatch);}
+        else{
+          navigate("/login", { state: { from: location?.pathname } });
+        }
       }
 
 
       const wishlistHandler=(product,token,dispatch)=>{
+        if(token){
         isInWishList(product._id,wishlist)?navigate("/wishlist"):addToWishList(product,token,dispatch);
+        }
+        else{
+          navigate("/login", { state: { from: location?.pathname } });
+        }
       }
-
-    // const product=getProduct(productId);
     const getData=async(productId)=>{
         try {
            const product=await getProduct(productId);
-           console.log(product,"product")
            setProduct(product);
            
         } catch (error) {
            console.log(error); 
         }
         finally{
-            // setProduct(product);
             setLoading(false);
         }
     }
@@ -50,18 +54,17 @@ export const ProductDetail = () => {
 
 
     useEffect(()=>{
-        console.log("UsseEffect")
+        setLoading(true);
         getData(productId);
     },[])
 
    
   return (
-    <div className='container-center'>
-        {isLoading&&<h1>Loading.....</h1>}
+    <div className='container-center flex-center'>
         {
             !isLoading&&
             <>
-        <div className="conatiner-content">
+        <div className="conatiner-content product-detailCard">
             <div className="img-container">
             <img
                 className="product-img"
@@ -72,7 +75,7 @@ export const ProductDetail = () => {
             <div className="conatiner-detail">
             <h3 className="productDetail=Title">{product?.productName}</h3>
           <p>
-            {product.rating}/5 <MdStarRate color="red" />
+            {product?.rating}/5 <MdStarRate color="red" />
           </p>
           <p>
             <span className="current-price">₹{product?.currentPrice} </span>
@@ -80,8 +83,8 @@ export const ProductDetail = () => {
             <span className="discount"> 60%Off</span>
           </p>
           <div className="button-action">
-            <button className='btn-default' onClick={()=>cartHAndler(product,token,dispatch)}>{isInCart(product._id,cart)?"Go To Cart":"Add To Cart"}</button>
-            <button className='btn-default' onClick={()=>wishlistHandler(product,token,dispatch)}>{isInWishList(product._id,wishlist)?"Go To WishList":"Add To WishList"}</button>
+            <button className='btn-default' onClick={()=>cartHAndler(product,token,dispatch)}>{isInCart(product?._id,cart)?"Go To Cart":"Add To Cart"}</button>
+            <button className='btn-default' onClick={()=>wishlistHandler(product,token,dispatch)}>{isInWishList(product?._id,wishlist)?"Go To WishList":"Add To WishList"}</button>
           </div>
           <div className="feature">
             <img

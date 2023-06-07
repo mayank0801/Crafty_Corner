@@ -41,11 +41,11 @@
   .filter-input>label>input[type="checkbox"]{
     width: 10%;
   } 
+  .filter-input>label>input[type="radio"]{
+    width: 10%;
+  } 
 
-  /* input[type="checkbox"] 
-{
-    width:10%;
-} */
+
  
   .filter-input>label>input :last-child{
     width: 10%;
@@ -60,3 +60,17 @@
     border-bottom: 1px solid red;
   }
   
+
+  .btn-clear{
+    margin-top: 1rem;
+    text-align: center;
+    border: none;
+    width: 100%;
+    background-color: rgb(145, 148, 150);
+    padding: 0.5rem 1rem;
+    
+  }
+  .btn-clear:hover{
+     background-color:red;
+     color: white;
+  }

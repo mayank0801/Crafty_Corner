@@ -4,15 +4,11 @@ import { DataContext } from "../../context/dataContext/dataContext";
 import {IoMdClose} from "react-icons/io"
 import {AiFillStar} from "react-icons/ai"
 export default function FilterCard({setshowFilter,isshowFilter}) {
-  // console.log(setshowFilter,"props")
   const {state,dispatch}=useContext(DataContext)
   const sortType = ["High To Low", "Low To High"];
   const rating = [5, 4, 3, 2, 1];
-    const MIN_VALUE=0;
-    const MAX_VALUE=20000;
-
-
-    // console.log(state.filters.sortType,"SortType Value");
+    const MIN_VALUE=200;
+    const MAX_VALUE=10000;
   return (
     <div className="filter-container">
       <div className="filter-heading borderBottom">
@@ -27,8 +23,10 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
         <p>Price</p>
     </div>
     <div className="filter-input">
+    <p className="rating"><span>₹200 </span><span>₹10000</span></p>
         <label>
             <input type="range" min={MIN_VALUE} max={MAX_VALUE} defaultValue={MAX_VALUE}
+            value={state.filters.price}
             onChange={(e)=>dispatch({
                 type:"FILTER_CHANGE",
                 payLoad:{
@@ -38,6 +36,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
             })}
             />
         </label>
+        <p>Price Range ₹{MIN_VALUE} - ₹{state.filters.price}</p>
     </div>
     </div>
 
@@ -45,14 +44,14 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
 
       <div className="filter-input-container borderBottom">
         <div className="filter-title">
-          <h4>Sort</h4>
+          <p>Sort</p>
         </div>
         <div className="filter-input">
           {sortType.map((sortTitle) => {
             return (
-              <>
+             
               <label key={sortTitle} className="input-filter">
-                 </label>
+                 
                 <input type="radio" 
                 
                     checked={state.filters.sortType===sortTitle}
@@ -66,7 +65,7 @@ export default function FilterCard({setshowFilter,isshowFilter}) {
                     }
                 })}}/>
                 <span>{sortTitle}</span>
-                </>
+                </label>
             );
           })}
         </div>

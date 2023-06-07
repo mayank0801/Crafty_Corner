@@ -3,7 +3,7 @@ export const initialState={
         sortType:"",
         rating:1,
         categorySelected:[],
-        price:9000,
+        price:10000,
         searchValue:""
     },
     products:[],
@@ -63,7 +63,7 @@ export const reducer=(state,action)=>{
                 sort:"",
                 rating:0,
                 categorySelected:[],
-                price:9000,
+                price:10000,
                 searchValue:""
             }}
         case "UPDATE_ADDRESS":

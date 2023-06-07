@@ -9,8 +9,6 @@ export const Cart = () => {
 
   const Bill=TotalcartPrice(cart)
   const navigate=useNavigate();
-
-  // {cart.length===0&&<div className='container-center'><h1 className='title'> Your Cart Is Empty ! ☹️</h1></div>}
   useEffect(()=>{
     setLoading(true)
     setTimeout(()=>setLoading(false),1000)
@@ -19,7 +17,7 @@ export const Cart = () => {
  return(
   
   <>
-  {cart.length===0?<h1 className='title text-center'> Your Cart Is Empty ! ☹️</h1>:
+  {cart.length===0?<><h1 className='title text-center'> Your Cart Is Empty ! ☹️</h1><button className='position-center navigate-btn' onClick={()=>navigate("/store")}>Explore Products</button></>:
   
 
   

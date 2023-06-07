@@ -7,7 +7,24 @@
     max-width: 50%;
     margin: 1rem auto;
 }
+.position-center{
+    position: relative;
+    left: 45%;
+}
+.navigate-btn{
+    /* border: 1px solid black; */
+    border: none;
+    background-color: rgb(216, 216, 228);
+    color: red;
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+.navigate-btn:hover{
+    background-color: red;
+    color: black
 
+}
 
 
 

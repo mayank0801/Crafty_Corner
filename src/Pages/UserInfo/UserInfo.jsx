@@ -55,8 +55,8 @@ useEffect(()=>{
             <h1 className='title'>Account</h1>
             <div className='user-info-detail'>
               <div className='user-info-navigation'>
-                <label><button className='btn-display 'onClick={()=>setIsProfile(!isProfile)}>Profile</button></label>
-                <label><button className='btn-display ' onClick={()=>setIsProfile(!isProfile)}>Address</button></label>
+                <label><button className='btn-display 'onClick={()=>setIsProfile(true)}>Profile</button></label>
+                <label><button className='btn-display ' onClick={()=>setIsProfile(false)}>Address</button></label>
               </div>
               <div className='user-content'>
                 {isProfile&&<UserDetail/>}
@@ -66,18 +66,18 @@ useEffect(()=>{
                 <div className='address-container'>
                 {
                     address.map((add)=> 
-                    <div className='addressCard-container'>
+                    <div className='addressCard-container' key={add._id}>
                     <h4>{add.Name}</h4>
                     <p>{`${add.Address},${add.City},${add.State},${add.Country}`}</p>
                     <p>{add.Postal_Code}</p>
                     <p>{add.Mob_No}</p>
-                    <button onClick={()=>{
+                    <button className="button-5" onClick={()=>{
                       setShowAddressForm(true)
                       setAddress(add)
                       setUpdate(true)
                    
                     }}>Edit</button>
-                    <button onClick={()=>dispatch({type:"REMOVE_ADDRESS",payLoad:add._id})}>Remove</button>
+                    <button className="button-5" onClick={()=>dispatch({type:"REMOVE_ADDRESS",payLoad:add._id})}>Remove</button>
                  </div>
 
                  )

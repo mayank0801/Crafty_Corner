@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { DataContext } from "../../context/dataContext/dataContext";
 import {AiFillEye,AiFillEyeInvisible} from "react-icons/ai"
 import { toast } from "react-toastify";
+import { TOAST_PARAMS } from "../../utils/utlis";
 
 
 export default function Login() {
@@ -23,17 +24,18 @@ export default function Login() {
       try {
         const response=await loginHandler(email,password);
         if(response.status===200||response.status===201){
+          localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
           setToken(response.data.encodedToken);
           setUser(response.data.foundUser);
           dispatch({type:"INTIALIZE_CART",payLoad:response.data.foundUser.cart})
           dispatch({type:"INITALIZE_WISHLIST",payLoad:response.data.foundUser.wishlist});
-          toast.success("Sign In SucessFull");
-          localStorage.setItem("user", JSON.stringify({"token":response.data.encodedToken,"userInfo":response.data.foundUser}));
-          navigate(location.state.from)
+          toast.success("Sign In SucessFull",TOAST_PARAMS);
+          location?.state?.from?navigate(location.state.from):navigate("/userProfile")
         }
-        
       } catch (error) {
-        
+        console.log(error);
+          toast.warn("User Not Found",TOAST_PARAMS)
+       
       }
 
     }
@@ -48,12 +50,12 @@ export default function Login() {
         <main>
           <div className="input-container">
             <label htmlFor="email">Email:</label>
-            <input type="email" value={email}  placeholder="test@gmail.com" onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="email" value={email}  placeholder="test@gmail.com" onChange={(e)=>setEmail(e.target.value)} />
           </div>
           <div className="input-container">
             <label htmlFor="password">Password:
             <span className="password-container">
-            <input type={showPassword?"text":"password"} value={password} placeholder="*****" onChange={(e)=>setpassword(e.target.value)}/>
+            <input type={showPassword?"text":"password"} value={password} placeholder="*****" onChange={(e)=>setpassword(e.target.value)} required/>
             {showPassword?<AiFillEye onClick={()=>setShowPassword(false)}/>:<AiFillEyeInvisible onClick={()=>setShowPassword(true)}/>}
             </span>
             </label>
@@ -61,10 +63,10 @@ export default function Login() {
         </main>
         <footer>
         <div className="btn-primary">
-            <span onClick={()=>login(email,password)}>Log In</span>
+            <span className="cursor" onClick={()=>login(email,password)}>Log In</span>
           </div>
           <div className="btn-primary">
-            <span onClick={()=>login("adarshbalika@gmail.com","adarshbalika")}>Login With Test Credential</span>
+            <span className="cursor" onClick={()=>login("adarshbalika@gmail.com","adarshbalika")}>Login With Test Credential</span>
           </div>
           <div className="login-navigater">
             
